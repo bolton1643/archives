@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">  
+<taglib>  
+    <tlib-version>2.2.3</tlib-version>  
+    <jsp-version>1.2</jsp-version>  
+    <short-name>tangs</short-name>  
+    <uri>/tangs</uri>  
+    <display-name>"Tangs Tags"</display-name>  
+       
+        <tag>
+            <name>pages</name>  
+            <tag-class>com.ltxc.paging.PageTag</tag-class><!--标签类-->
+            <body-content>empty</body-content>  
+            <attribute><!-- 标签中的属性 -->
+                <name>cpage</name><!-- 属性名 -->
+                <required>true</required><!--是否必须 --> 
+                <rtexprvalue>true</rtexprvalue><!--表示该自定义标签的某属性的值可以直接指定或者通过动态计算指定 --> 
+            </attribute>  
+            <attribute>  
+                <name>total</name>  
+                <required>true</required>  
+                <rtexprvalue>true</rtexprvalue>  
+            </attribute>  
+            <attribute>  
+                <name>url</name>  
+                <required>true</required>  
+                <rtexprvalue>true</rtexprvalue>  
+            </attribute>  
+            <attribute>  
+                <name>param</name>  
+                <required>false</required>  
+                <rtexprvalue>true</rtexprvalue>  
+            </attribute>              
+        </tag>  
+</taglib>

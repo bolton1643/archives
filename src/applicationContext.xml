@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 定义数据源Bean，使用C3P0数据源实现 -->
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<!-- 指定连接数据库的驱动 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<!-- 指定连接数据库的URL -->
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/rf2?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<!-- 指定连接数据库的用户名 -->
+		<property name="user" value="root" />
+		<!-- 指定连接数据库的密码 -->
+		<property name="password" value="123456" />
+		<!-- 指定连接数据库连接池的最大连接数 -->
+		<property name="maxPoolSize" value="30" />
+		<!-- 指定连接数据库连接池的最小连接数 -->
+		<property name="minPoolSize" value="5" />
+		<!-- 指定连接数据库连接池的初始化连接数 -->
+		<property name="initialPoolSize" value="10" />
+		<!-- 指定连接数据库连接池的连接的最大空闲时间 -->
+		<property name="maxIdleTime" value="10" />
+	</bean>
+	
+	<!--定义了Hibernate的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>com/sw/pojo/User.hbm.xml</value>
+				<value>com/sw/pojo/Contactinfo.hbm.xml</value>
+				<value>com/sw/pojo/TreeNode.hbm.xml</value>
+				<value>com/sw/pojo/FileInfo.hbm.xml</value>
+				<value>com/sw/pojo/UserRight.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<!--  事务拦截器bean需要依赖注入一个事务管理器 -->
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<!--  下面定义事务传播属性-->
+			<props>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 定义BeanNameAutoProxyCreator-->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<!--  指定对满足哪些bean name的bean自动生成业务代理 -->
+		<property name="beanNames">
+			<!--  下面是所有需要自动创建事务代理的bean-->
+			<list>
+				<value>userManager</value>
+				<value>treeManager</value>
+				<value>dataManager</value>
+				<value>metaData</value>
+			</list>
+			<!--  此处可增加其他需要自动创建事务代理的bean-->
+		</property>
+		<!--  下面定义BeanNameAutoProxyCreator所需的事务拦截器-->
+		<property name="interceptorNames">
+			<list>
+				<!-- 此处可增加其他新的Interceptor -->
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="metaData" class="com.sw.util.MetaDataImpl" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="userManager"
+		class="com.sw.service.impl.UserManagerImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="userDao"
+		class="com.sw.dao.impl.UserDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="treeManager"
+		class="com.sw.service.impl.TreeManagerImpl">
+		<property name="treeDao" ref="treeDao" />
+	</bean>
+
+	<bean id="treeDao"
+		class="com.sw.dao.impl.TreeNodeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="fileManager"
+		class="com.sw.service.impl.FileManagerImpl">
+		<property name="fileDao" ref="fileDao" />
+	</bean>
+
+	<bean id="fileDao"
+		class="com.sw.dao.impl.FileDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+	
+	<bean id="dataManager"
+		class="com.sw.service.impl.DataManagerImpl">
+		<property name="dataDao" ref="dataDao" />
+	</bean>
+
+	<bean id="dataDao"
+		class="com.sw.dao.impl.DataDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+</beans>
