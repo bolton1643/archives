@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rt6" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="whereCond" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+VFWOBOA10XF,VFWO1O5CXQF,V15QFOGX34FOBL,VFWOT0ROWSGKH0CX0,V44TVNDT1Z3IDL
+FROM t11  $P!{whereCond}]]>
+	</queryString>
+	<field name="VFWOBOA10XF" class="java.lang.String"/>
+	<field name="VFWO1O5CXQF" class="java.lang.String"/>
+	<field name="V15QFOGX34FOBL" class="java.lang.String"/>
+	<field name="VFWOT0ROWSGKH0CX0" class="java.lang.String"/>
+	<field name="V44TVNDT1Z3IDL" class="java.lang.String"/>
+	<detail>
+		<band height="607">
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="50" y="35" width="111" height="20"/>
+				<textElement>
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWO1O5CXQF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="50" y="130" width="15" height="434"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{V15QFOGX34FOBL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

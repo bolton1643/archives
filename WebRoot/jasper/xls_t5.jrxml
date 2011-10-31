@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="t5" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tid" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from $P!{tid} ]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID2" class="java.lang.Integer"/>
+	<field name="VIWNVOCD" class="java.lang.String"/>
+	<field name="VFWO1O5CXQF" class="java.lang.String"/>
+	<field name="VFWOFPIPWLG" class="java.lang.String"/>
+	<field name="VFWOJMHD" class="java.lang.String"/>
+	<field name="V5OV3MED4UG" class="java.lang.String"/>
+	<field name="V15QFOGD" class="java.lang.String"/>
+	<field name="V0WRLNED" class="java.lang.String"/>
+	<field name="VFWOHLJD" class="java.lang.String"/>
+	<field name="VC3VR1YC" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[ID2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VIWNVOCD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VFWO1O5CXQF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VFWOFPIPWLG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VFWOJMHD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[V5OV3MED4UG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[V15QFOGD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[V0WRLNED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VFWOHLJD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VC3VR1YC]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{ID2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VIWNVOCD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWO1O5CXQF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWOFPIPWLG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWOJMHD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{V5OV3MED4UG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{V15QFOGD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{V0WRLNED}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWOHLJD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VC3VR1YC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

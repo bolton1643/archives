@@ -1,0 +1,271 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-size: 10pt;
+	background-color: #EFFBFB;
+}
+
+/*设置按钮的高度*/
+input[type=button],input[type=submit],input[type=reset] {
+	height: 20px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+/*设置文本框的风格*/
+input[type=text],input[type=password],textarea {
+	border: 1px solid #84a1bd;
+	background: #E8FDFF;
+	font-size: 10pt;
+}
+
+/*鼠标变为手形*/
+*[name=selimg] {
+	cursor: pointer;
+}
+
+/*链接风格*/
+a:link {
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+a:visited {
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+a:hover {
+	font-size: 10pt;
+	color: #9900ff;
+	text-decoration: none;
+}
+
+/*新增编辑*/
+#edit {
+	border-bottom: 1px dotted #999999;
+	border-left: 1px dotted #999999;
+	border-top: 1px dotted #999999;
+	border-right: 1px dotted #999999;
+	margin-bottom: 10pt;
+}
+
+#formTable td {
+	text-align: left;
+}
+
+#formTable tr td:first-child {
+	text-align: right;
+}
+
+/*按钮区域*/
+#btnDiv {
+	height: 10%;
+	width: 100%;
+	text-align: right;
+	bottom: 0px;
+	padding-bottom: 10px;
+}
+
+/*按钮区域span*/
+#btnDiv span {
+	text-align: right;
+}
+
+/*字段不能为空提示*/
+#nel {
+	color: red;
+}
+
+/*结果提示*/
+#resultTip {
+	text-align: center;
+	background-color: #FFF1A8;
+	color: green;
+	font-weight: bold;
+	border: 1px dotted #999;
+	padding: 2px 5px 2px 4px;
+	width: 98%;
+	margin-top: 10px;
+	display: block;
+	border-bottom: none;
+	color: green;
+}
+
+/*高亮CSS*/
+.highlight {
+	background-color: yellow;
+	font-weight: bold;
+}
+
+/*------ 菜单区域 Start ------*/
+#leftMenu a {
+	width: 110px;
+	display: block;
+	padding-left: 10px;
+}
+
+#leftMenu li {
+	background: #CCC;
+	border-bottom: #FFF 1px solid;
+	float: left;
+}
+
+#leftMenu li a:hover {
+	background: #CC0000;
+}
+
+#leftMenu a:link {
+	color: #666;
+	text-decoration: none;
+}
+
+#leftMenu a:visited {
+	color: #666;
+	text-decoration: none;
+}
+
+#leftMenu a:hover {
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/*------ 右边栏提示信息 Start ------*/
+#rightTip label {
+	color: red;
+}
+
+/*人员树DIV*/
+#tree {
+	height: 350px;
+	width: 300px;
+	overflow: scroll;
+	overflow-y: hidden;
+	display: none;
+}
+
+.onLoad {
+	background: #E9FFEB url(../images/loading.gif) no-repeat 3px 3px;
+	padding-left: 25px;
+	height: 20px;
+	line-height: 20px;
+}
+
+/*------ 列表 Start ------*/
+/*数据列表*/
+#row th {
+	vertical-align: middle;
+	border-right: #fff 1px solid;
+	border-bottom: blue 1px solid;
+	font-weight: bold;
+	background: #3e83c9;
+	padding-bottom: 2px;
+	color: #fff;
+	line-height: 1.2;
+	padding-top: 2px;
+}
+
+#row td {
+	vertical-align: middle;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+#row .alt {
+	background: #ecf6fc
+}
+
+#row .over {
+	background: #B8FCBD;
+	color: red;
+}
+#row .row_active{
+	background: #C1CDD8;
+}
+
+/*模块头部提示*/
+#title {
+	text-align:center;
+	background-color: #CEE3F6;
+	border: 1px dotted #999;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	width: 99%;
+	margin-top: 10px;
+	display: block;
+	border-bottom: none;
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+#title img {
+	align: absmiddle;
+}
+
+/*查询区域*/
+#query {
+	vertical-align: middle;
+	border: 1px dotted #999;
+	padding: 2px 5px 2px 4px;
+	width: 99%;
+	margin-top: 10px;
+	display: none;
+	border-bottom: none;
+}
+
+/*查询区域中的label*/
+#query label {
+	vertical-align: middle;
+	padding-right: 20px;
+}
+
+/*查询图片*/
+#queryImg {
+	align: absmiddle;
+	cursor: pointer;
+	padding-left: 50px;
+}
+
+/*------ 验证插件CSS Start ------*/
+.onShow {
+	background: url(../images/validitor/onShow.gif) no-repeat;
+	padding-left: 25px;
+	font-size: 12px;
+	line-height: 22px;
+	vertical-align: middle;
+}
+
+.onFocus {
+	background: #E9F0FF url(../images/validitor/onFocus.gif) no-repeat;
+	padding-left: 25px;
+	font-size: 12px;
+	line-height: 22px;
+	vertical-align: middle;
+}
+
+.onError {
+	background: #FFF2E9 url(../images/validitor/onError.gif) no-repeat;
+	padding-left: 25px;
+	font-size: 12px;
+	line-height: 22px;
+	vertical-align: middle;
+}
+
+.onCorrect {
+	background: #E9FFEB url(../images/validitor/onCorrect.gif) no-repeat;
+	padding-left: 25px;
+	font-size: 12px;
+	line-height: 22px;
+	vertical-align: middle;
+}
+
+.onLoad {
+	background: #E9FFEB url(../images/validitor/onLoad.gif) no-repeat 3px 3px;
+	padding-left: 25px;
+	font-size: 12px;
+	line-height: 22px;
+	vertical-align: middle;
+}

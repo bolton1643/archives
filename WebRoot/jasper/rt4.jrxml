@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rt1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="whereCond" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+VFWOBOA10XF,VFWO1O5CXQF,V15QFOGX34FOBL,VEHPDLFHXWG2NM5TXEWTB,V44TVNDT1Z3IDL
+FROM t11  $P!{whereCond}]]>
+	</queryString>
+	<field name="VFWOBOA10XF" class="java.lang.String"/>
+	<field name="VFWO1O5CXQF" class="java.lang.String"/>
+	<field name="V15QFOGX34FOBL" class="java.lang.String"/>
+	<field name="VEHPDLFHXWG2NM5TXEWTB" class="java.lang.String"/>
+	<field name="V44TVNDT1Z3IDL" class="java.lang.String"/>
+	<detail>
+		<band height="607">
+			<textField>
+				<reportElement x="47" y="69" width="111" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWO1O5CXQF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="189" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{V15QFOGX34FOBL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="364" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VEHPDLFHXWG2NM5TXEWTB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="435" width="111" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{V44TVNDT1Z3IDL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="69" width="22" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWOBOA10XF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="69" width="15" height="20"/>
+				<textElement markup="none"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="303" width="555" height="20"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[浙江明贺钢管有限公司]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

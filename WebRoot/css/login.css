@@ -1,0 +1,60 @@
+body {
+	margin: 5px;
+}
+
+A:link {
+	text-decoration: none;
+	color: #009
+}
+
+A:visited {
+	text-decoration: none;
+	color: #800080
+}
+
+A:active {
+	text-decoration: none;
+	color: #c00;
+}
+
+A:hover {
+	text-decoration: underline;
+	color: #c00;
+}
+
+p,li {
+	font-family: ËÎÌו, Arial;
+	font-size: 9pt;
+	line-height: 150%;
+}
+
+td {
+	font-family: ËÎÌו, Arial;
+	font-size: 9pt;
+	line-height: 150%;
+}
+
+.fontsize10 {
+	font-family: ËÎÌו, Arial;
+	font-size: 10pt;
+}
+
+/*
+a.a1:visited {color: #FFFFFF; text-decoration: none;line-height: 15pt;}
+a.a1:hover {color: #FFFFFF; line-height: 15pt; background-color: #4A8FF2; width: 70px;}
+a.a1:link {color: #FFFFFF; text-decoration: none;line-height: 15pt;}
+*/
+ul {
+	list-style-type: disc;
+	margin-left: 15px;
+}
+
+select,input {
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+.font14 {
+	font-size: 14px;
+}
