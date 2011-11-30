@@ -8,7 +8,8 @@
 		<title>数据管理</title>
 		<link type="text/css" href="css/smoothness/jquery-ui-1.7.custom.css" rel="stylesheet" />	
 		<link type="text/css" href="css/bruce.css" rel="stylesheet" />
-		<link type="text/css" href="css/ligerui-common.css" rel="stylesheet" />  
+		<link type="text/css" href="css/ligerui-common.css" rel="stylesheet" />
+		<link type="text/css" href="css/ligerui-grid.css" rel="stylesheet" />   
 		<script type="text/javascript" src="js/jquery-last.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.7.custom.min.js"></script>		
 		<script type="text/javascript">
@@ -24,13 +25,12 @@
 		</script>
 	</head>
 <body>	
-<br></br>
+<div align="center" valign="middle">
 <s:form action="dDoEdit" theme="simple" name="form1" id="form1" method="post">
     <input type="hidden" name="tid" id="tid" value="${tid}"/>
     <input type="hidden" name="id" id="id" value="${id}"/>
-<table border="0" style="padding-top:10px;" align="center" cellpadding="0" cellspacing="0">  
+<table class="bruce-body-table" cellspacing="0" cellpadding="0" align="center">  
 	<s:iterator value="cList" status="st">
-		
 			<s:if test="dName=='ID'">
 				<input type="hidden" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />
 			</s:if>
@@ -40,7 +40,7 @@
 			<s:elseif test="dType=='日期'">
 				<tr align="left">
 					<td><s:property value="dNotes" /></td>
-					<td><input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="datepicker"	style=""width:30;" />	</td>
+					<td><input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="datepicker"	style="width:30;" />	</td>
 				</tr>				
 			</s:elseif>
 			<s:elseif test="dName.lastIndexOf('_PHOTO')>=0">
@@ -48,7 +48,7 @@
 					<td><s:property value="dNotes" /></td>
 					<td>
 					  <input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />						
-					  <input type="button" name="选择图片" value="选择图片" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
+					  <input type="button" name="选择图片" value="选择图片"  onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
 					</td>  
 			   </tr>	
 			</s:elseif>
@@ -57,7 +57,7 @@
 						<td><s:property value="dNotes" /></td>
 						<td>
 						  <input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />						
-						  <input type="button" name="选择文件" value="选择文件" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
+						  <input type="button" name="选择文件" value="选择文件"  onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
 						</td>			
 			   </tr>	
 			</s:elseif>
@@ -75,10 +75,10 @@
           <button class="btn_m" name="submit" id="submit">提交</button>  
           <div class="btn_r"></div>
        </div>
-   </div>
-</td></tr>
+   </td></tr>
 </table>
 
 </s:form>
+</div>
 </body>
 </html>
