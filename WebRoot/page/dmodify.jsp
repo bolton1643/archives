@@ -6,10 +6,9 @@
 <%@include file="common/global.jsp" %>
 	<head>
 		<title>数据管理</title>
-		<link type="text/css" href="css/smoothness/jquery-ui-1.7.custom.css" rel="stylesheet" />
-		<style type="text/css">
-			body{ font: 75.5% "Trebuchet MS", sans-serif; margin: 50px;}
-		</style>		
+		<link type="text/css" href="css/smoothness/jquery-ui-1.7.custom.css" rel="stylesheet" />	
+		<link type="text/css" href="css/bruce.css" rel="stylesheet" />
+		<link type="text/css" href="css/ligerui-common.css" rel="stylesheet" />  
 		<script type="text/javascript" src="js/jquery-last.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.7.custom.min.js"></script>		
 		<script type="text/javascript">
@@ -25,46 +24,59 @@
 		</script>
 	</head>
 <body>	
+<br></br>
 <s:form action="dDoEdit" theme="simple" name="form1" id="form1" method="post">
-<table border="0" align="center" cellpadding="0" cellspacing="0">
-	<input type="hidden" name="tid" id="tid" value="${tid}"/>
-	<input type="hidden" name="id" id="id" value="${id}"/>
+    <input type="hidden" name="tid" id="tid" value="${tid}"/>
+    <input type="hidden" name="id" id="id" value="${id}"/>
+<table border="0" style="padding-top:10px;" align="center" cellpadding="0" cellspacing="0">  
 	<s:iterator value="cList" status="st">
 		
 			<s:if test="dName=='ID'">
-				
+				<input type="hidden" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />
 			</s:if>
+			<s:elseif test="dName=='ID2'">
+                          
+    </s:elseif>
 			<s:elseif test="dType=='日期'">
 				<tr align="left">
 					<td><s:property value="dNotes" /></td>
-					<td><INPUT type="text" name=<s:property value="dName" /> value="<s:property value="dValue" />" id="datepicker" width="30">
-					</td>
+					<td><input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="datepicker"	style=""width:30;" />	</td>
 				</tr>				
 			</s:elseif>
 			<s:elseif test="dName.lastIndexOf('_PHOTO')>=0">
 				<tr align="left">
 					<td><s:property value="dNotes" /></td>
-					<td><INPUT type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />">						
-					<input type="button" name="选择图片" value="选择图片" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')">
+					<td>
+					  <input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />						
+					  <input type="button" name="选择图片" value="选择图片" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
+					</td>  
 			   </tr>	
 			</s:elseif>
 			<s:elseif test="dType=='文件'">
-			    <tr align="left">
-					<td><s:property value="dNotes" /></td>
-					<td><INPUT type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />">						
-					<input type="button" name="选择文件" value="选择文件" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')">			
+			   <tr align="left">
+						<td><s:property value="dNotes" /></td>
+						<td>
+						  <input type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />						
+						  <input type="button" name="选择文件" value="选择文件" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
+						</td>			
 			   </tr>	
 			</s:elseif>
 		
 			<s:else>
-			    <tr align="left">
-				<td><s:property value="dNotes" /></td>
-				<td><INPUT  type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />">	
+			  <tr align="left">
+				  <td><s:property value="dNotes" /></td>
+				  <td><input  type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" /></td>	
 				</tr>					
 			</s:else>
     </s:iterator>
-
-<tr><td></td><td><input type="submit" value="提交" /></td></tr>
+    <tr><td></td><td>
+       <div class="btn" style="margin:0 auto;float:left">
+          <div class="btn_l"></div>
+          <button class="btn_m" name="submit" id="submit">提交</button>  
+          <div class="btn_r"></div>
+       </div>
+   </div>
+</td></tr>
 </table>
 
 </s:form>

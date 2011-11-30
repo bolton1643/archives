@@ -62,9 +62,9 @@ function regFormValidator() {
  * @return {Boolean}
  */
 function showRequest(formData, jqForm, options) {
-	var valid = jQuery.formValidator.pageIsValid('1');
+  var valid = jQuery.formValidator.pageIsValid('1');
 	if (valid) {
-		$('#submit').attr('value', '正在登录……').attr('disabled', false);
+		$('#submit').html('正在登录……').attr('disabled', false);
 		return true;
 	} else {
 		return false;
@@ -92,7 +92,7 @@ function showResponse(responseText, statusText) {
 		
 		var n = getIEVersion();
 		if(n == "MSIE")
-			window.location.href = 'index.jsp';
+			window.location.href = '../page/index.jsp';
 		else if(n =="Firefox")
 			window.location.href = 'page/index.jsp';
 	} else if(statusText == 'success' && mess.message == 'admin'){
@@ -108,13 +108,13 @@ function showResponse(responseText, statusText) {
 		
 		var n = getIEVersion();
 		if(n == "MSIE")
-			window.location.href = 'admin/index.jsp';
+			window.location.href = '../admin/index.jsp';
 		else if(n =="Firefox")
 			window.location.href = 'admin/index.jsp';		
 	
 	} else {
 		common.dialog('登录失败，用户名或密码错误，请重试！', 'error');
-		$('#submit').attr('value', '登 陆').attr('disabled', false);;
+		$('#submit').html('登 陆').attr('disabled', false);;
 	}
 }
 

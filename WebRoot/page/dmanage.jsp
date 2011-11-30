@@ -8,11 +8,8 @@
 <html>
   <head>
     <base href="http://<%=request.getHeader("host")%><%=request.getContextPath()%>/" />
-
-
     <link href="css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
-      
     <script src="js/plugins/ligerGrid.js" type="text/javascript"></script> 
     <script src="js/plugins/ligerToolBar.js" type="text/javascript"></script>
     <script src="js/plugins/ligerDialog.js" type="text/javascript"></script>
@@ -20,71 +17,65 @@
     <script src="js/plugins/ligerComboBox.js" type="text/javascript"></script>
     <script src="js/plugins/ligerResizable.js" type="text/javascript"></script>
     <script src="js/common.js" type="text/javascript"></script>  
-    
-	<script src="js/plugins/ligerButton.js" type="text/javascript"></script>
+   	<script src="js/plugins/ligerButton.js" type="text/javascript"></script>
     <script src="js/plugins/ligerDialog.js" type="text/javascript"></script>
-    
     <script type="text/javascript">
 		function printData()
 		{
 		   var New=document.getElementsByName("reportname");
 		   var strNew;
 		   for(var i=0;i<New.length;i++)
-		   {
-			  if(New.item(i).checked){
+		   {//begin for
+			   if(New.item(i).checked){
 			     strNew=New.item(i).getAttribute("value");  
-			  	 break;
-		 	  }
-		   }
+			  	  break;
+		 	    }//end of if
+		   }//end of for
 		   if(strNew ==null || strNew =='')
-		   {
+		   {//begin of if
 		   		alert('请选择模板');
 		   		return;
 		   }else{
 		   		document.getElementById("rid").value= strNew;
-			  	document.forms[0].action="PDF2.action";
+			  	 document.forms[0].action="PDF2.action";
 			    document.forms[0].submit();		
-		   }
-		   	
-		   
-	
-		}    
-        var gridManager = null;    
+		   }//end of else	
+		} //end of func
+		
+   var gridManager = null;    
 		function queryData()
-		{
-                if (!gridManager) return;
-                
-                var qColumnVals = [];
-	            var control = document.getElementsByName("qColumn")
-	            for(var i=0;i<control.length;i++){
-	                qColumnVals.push(control[i].value);
-	            }
+		{//begin
+     if (!gridManager) return;
+     
+		  var qColumnVals = [];
+		  var control = document.getElementsByName("qColumn")
+     for(var i=0;i<control.length;i++){
+       qColumnVals.push(control[i].value);
+     }//end of for
 	            
-	            var qCondVals = [];
-                
-	            var control2 = document.getElementsByName("qCond")
-	            for(var i=0;i<control2.length;i++){
-	                qCondVals.push(control2[i].value);
-	            }
+     var qCondVals = [];
+     var control2 = document.getElementsByName("qCond")
+     for(var i=0;i<control2.length;i++){
+       qCondVals.push(control2[i].value);
+     }//end of for
 	            
-	            var qValueVals = [];
-	            var control3 = document.getElementsByName("qValue")
-	            for(var i=0;i<control3.length;i++){
-	                qValueVals.push(control3[i].value);
-	            }	            	            
+     var qValueVals = [];
+     var control3 = document.getElementsByName("qValue")
+     for(var i=0;i<control3.length;i++){
+       qValueVals.push(control3[i].value);
+     }//end of for	            	            
                 
-                gridManager.setOptions(
-                    { parms: [{ name: 'qColumn', value: qColumnVals},
-                   		{name: 'qValue', value: qValueVals} ,
-                   		{name: 'qCond', value: qCondVals} 
+     gridManager.setOptions(
+       { parms: [{ name: 'qColumn', value: qColumnVals},
+                 {name: 'qValue', value: qValueVals} ,
+                 {name: 'qCond', value: qCondVals} 
                     ] }
                 );
-                gridManager.loadData(true);			
-		}
+     gridManager.loadData(true);			
+		}//end of func
+		
 		function rm(theRow){
 			var tb = document.getElementById("insertPosition");
-			//alert(tb.innerHTML)
-			//alert(theRow.innerHTML)
 			tb.removeChild(theRow);
 		}
 			    
@@ -97,194 +88,157 @@
 			});
 		});	
     
-        var activeDialog = null;
+	  var activeDialog = null;
         
-        function f_openWindow(url, title, width, height)
-        {
-            var dialogOptions = { width: width, height: height, title: title, url: url, buttons: [
-            { text: '关闭', onclick: function (item, dialog)
-            {
-                dialog.close();
-            }
-            }
+    function f_openWindow(url, title, width, height)
+    {//begin of func
+      var dialogOptions = { width: width, height: height, title: title, url: url, buttons: [
+            { text: '关闭',  onclick: function (item, dialog){ dialog.close();} }
             ], isResize: true, timeParmName: 'a'
-            };
-            activeDialog = $.ligerDialog.open(dialogOptions);
-        }
+            };//end of dia
+      activeDialog = $.ligerDialog.open(dialogOptions);
+    }//end of func
         
-        var alert = function (content)
-        {
-            $.ligerDialog.alert(content);
-        };
+    var alert = function (content)
+    {//be
+        $.ligerDialog.alert(content);
+    };//end of
 
 
-        $(function ()
-        {
-            //工具条
-            $("#toptoolbar").ligerToolBar({ items: [
-					<s:if test="radd==1">
-						{ text: '增加', id:'add', click: itemclick },
-					</s:if>                
-					<s:if test="rmodify==1">
-						{ text: '修改', id:'modify', click: itemclick },
-					</s:if>   
-					<s:if test="rdelete==1">
-						{ text: '删除', id:'delete', click: itemclick },
-					</s:if>   	
-					<s:if test="rdownload==11">
-						{ text: '下载', id:'download', click: itemclick },
-					</s:if> 
-					<s:if test="rprint==1">
-						{ text: '打印', id:'print', click: itemclick },
-					</s:if> 				                
-                  { text: 'Excel', id:'excel', click: itemclick },
-                
-                { text: '查询', id:'query', click: itemclick }
-            ]
-            });
+    $(function ()
+    {//begin
+                //工具条
+      $("#toptoolbar").ligerToolBar({ items: [
+					<s:if test="radd==1">   { text: '增加', id:'add', click: itemclick },   </s:if>                
+					<s:if test="rmodify==1">{ text: '修改', id:'modify', click: itemclick },</s:if>   
+					<s:if test="rdelete==1">{ text: '删除', id:'delete', click: itemclick },</s:if>   	
+					<s:if test="rdownload==11">	{ text: '下载', id:'download', click: itemclick },	</s:if> 
+					<s:if test="rprint==1"> 			{ text: '打印', id:'print', click: itemclick }, 		</s:if> 				                
+          { text: 'Excel', id:'excel', click: itemclick },     { text: '查询', id:'query', click: itemclick }
+     ]});//end toptoolbar
 
             //表格
-            $("#maingrid").ligerGrid({
-                columns: [
-				<s:iterator value="cList" status="st">
-				    { display: '<s:property value="dNotes" />', name: '<s:property value="dName" />', align: 'left', width: 100, minWidth: 40
-				   	}
-					<s:if test="#st.last==false">
+      $("#maingrid").ligerGrid({
+        columns: [
+				    <s:iterator value="cList" status="st">
+				      { display: '<s:property value="dNotes" />', name: '<s:property value="dName" />', align: 'left', width: 100, minWidth: 40}
+					  <s:if test="#st.last==false">
 						,
-					</s:if>
-					
-		        </s:iterator>
-                //], dataAction: 'server', data: [s:property value="jsonList" escape="false"], sortName: 'CustomerID',
-                ], dataAction: 'server', url: 'dList2.action?data=1&tid=<s:property value="tid" />', sortName: 'CustomerID',
-                width: '100%', height: '100%', pageSize: 30,
-                checkbox : true,
-                //应用灰色表头
-                cssClass: 'l-grid-gray', 
-                onAfterShowData: function (grid)
-				{                                     
-			   		$("td[columnindex='0']","#maingrid").hide();  //隐藏第1列  
-			   		$("td[columnindex='1']","#maingrid").hide();  //隐藏第2列  
-				},
-                heightDiff: -6
-            });
+					  </s:if>
+		      </s:iterator>], 
+		      dataAction: 'server', 
+		      url: 'dList2.action?data=1&tid=<s:property value="tid" />', 
+		      sortName: 'CustomerID',
+         width: '100%', height: '100%', pageSize: 30,
+         checkbox : true,
+                       //应用灰色表头
+         cssClass: 'l-grid-gray', 
+         onAfterShowData: function (grid)
+         {//begin of onAfter                                     
+           $("td[columnindex='0']","#maingrid").hide();  //隐藏第1列  
+           $("td[columnindex='1']","#maingrid").hide();  //隐藏第2列  
+         },//end of onAf
+         heightDiff: -6
+     });//end of biaoge
              
-            
-            gridManager = $("#maingrid").ligerGetGridManager();
-
-            $("#pageloading").hide();
-            
-
-
-        });
+    gridManager = $("#maingrid").ligerGetGridManager();
+    $("#pageloading").hide();
+  });//end of func
         
-        function f_reload()
-        {
-            gridManager && gridManager.loadData(true);
-        }
+  function f_reload(){
+    gridManager && gridManager.loadData(true);
+  }//end of func
 
-        function itemclick(item)
-        { 
-            if(item.id)
-            {
-                switch (item.id)
-                {
-                    case "Aqua":
-                        $("#maingrid").removeClass("l-grid-gray");
-                        return;
-                    case "Gray":
-                        $("#maingrid").addClass("l-grid-gray");
-                        return;
-                    case "modify":
-                        var rowsdata = gridManager.getCheckedRows();
-                        if (!rowsdata.length) 
-                        {
-                        	alert('请选择行');
-                        	return;
-                        }
-                        if(rowsdata.length >1)
-                        {
-                        	alert("编辑时，一次只能选择一行");
-                        	return;
-                        }
-                        var str = "";
-                        $(rowsdata).each(function ()
-                        {
-                            str += this.ID;
-                        });
+  function itemclick(item){ 
+    if(item.id){
+        switch (item.id)
+        {//begin of swi
+        case "Aqua":
+          $("#maingrid").removeClass("l-grid-gray");
+          return;
+        case "Gray":
+          $("#maingrid").addClass("l-grid-gray");
+          return;
+        case "modify":
+          var rowsdata = gridManager.getCheckedRows();
+          if (!rowsdata.length) 
+          {//begin
+            alert('请选择行');
+            return;
+          }//end of if
+          if(rowsdata.length >1)
+          {//begin
+            alert("编辑时，一次只能选择一行");
+            return;
+          }//end of if
+          var str = "";
+          $(rowsdata).each(function ()
+          {//begin of each
+            str += this.ID;
+          });//end of each
                         
-						var url = 'dEdit.action?tid=<s:property value="tid"/>&id='+str;
-						f_openWindow(url, '修改数据', 600, 350);
-                        return;
-                    case "delete":
-                        var data = gridManager.getCheckedRows();
-                        if (data.length == 0)
-                            alert('请选择行');
-                        else
-                        {
-                            var checkedIds = [];
-                            $(data).each(function ()
-                            {
-                                checkedIds.push(this.ID);
-                            });
-                            $.ligerDialog.confirm('确定删除' + checkedIds.join(',') + '?', function ()
-                            {
-                            		var postUrl = "dDel.action";
-									var d = "id="+checkedIds.join(',')+"&tid=<s:property value="tid"/>";
-									//alert(d)
-									$.ajax({
+						 var url = 'dEdit.action?tid=<s:property value="tid"/>&id='+str;
+						 f_openWindow(url, '修改数据', 600, 350);
+					   return;
+				   case "delete":
+			       var data = gridManager.getCheckedRows();
+			        if (data.length == 0)
+			          alert('请选择行');
+			        else
+			        {//begin of else
+			          var checkedIds = [];
+			          $(data).each(function ()
+			          {//begin of func
+			            checkedIds.push(this.ID);
+			          });//end of cunc
+			          $.ligerDialog.confirm('确定删除' + checkedIds.join(',') + '?', function ()
+                  {//begin of func
+                      var postUrl = "dDel.action";
+                      var d = "id="+checkedIds.join(',')+"&tid=<s:property value="tid"/>";
+                      $.ajax({
 			                        type: "post",
 			                        url:postUrl,
 			                        dataType:"html",
 			                        data:d,
 			                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-				                        //alert(XMLHttpRequest.status);
-				                        //alert(XMLHttpRequest.readyState);
-				                        //alert(textStatus);
-				                        //alert(errorThrown);
 				                        alert('网络错误');
-			                        },
+			                        },//end of 
 			                        success:function(data,textStatus)
-			                        		{
+			                        		{//begin 
 			                        			if(data == 'success')
-			                        			{
-													f_reload();
-			                        			}
-			                        		}
-			                      });                                   
-                            }); 
-                            
-                         
-                        }
-                        return;
-                    case "add":
-                        f_openWindow('dAdd.action?tid=<s:property value="tid"/>', '添加数据', 600, 350);
-                        return;
-                    case "query":
-                        var obj = document.getElementById("queryCondition");
-			          	if(obj.style.display=='none')
+			                        			{//begin
+			                               f_reload();
+			                        			}//end of if
+			                        		}//end of succ
+			                  });  //endof aj
+               }); //end of confirm
+             }//end of else 
+             return;
+           case "add":
+             f_openWindow('dAdd.action?tid=<s:property value="tid"/>', '添加数据', 600, 350);
+             return;
+           case "query":
+             var obj = document.getElementById("queryCondition");
+			         if(obj.style.display=='none')
 			          		obj.style.display="";
-			          	else
+			         else
 			          		obj.style.display='none';
-                    	return;
-                    	
-					case "print":
-						{
-							var obj = document.getElementById("printCondition");
-				          	if(obj.style.display=='none')
+              return;
+            case "print":
+            {//begin of
+							    var obj = document.getElementById("printCondition");
+				         if(obj.style.display=='none')
 				          		obj.style.display="";
-				          	else
+				         else
 				          		obj.style.display='none';
-				          		
-	                    	return;						
-						}
-						case "excel":
-							window.open("XLS2.action?rid=<s:property value="tid"/>",'导出Excel',"fullscreen=0");
-                        return;					
-					                  	
-                }
-            }
-            //alert(item.text);
-        }
+              	return;						
+						    }//end of print
+						    case "excel":
+							     window.open("XLS2.action?rid=<s:property value="tid"/>",'导出Excel',"fullscreen=0");
+               return;					
+             }//end of switch 
+          }//end of if(item)
+        }//end of func
     </script>
 </head>
 <body style="padding:0px; overflow:hidden;"> 

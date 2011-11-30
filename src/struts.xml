@@ -34,9 +34,9 @@
 		</global-exception-mappings>
 		<action name="login" class="com.sw.action.UserAction" method="login">
 		    <result type="json">
-		    	<param name="includeProperties">message</param>
+		    	    <param name="includeProperties">message</param>
 		    </result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			  <interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 	
 		<action name="user" class="com.sw.action.UserAction" method="userList">

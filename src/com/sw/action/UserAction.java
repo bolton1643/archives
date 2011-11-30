@@ -44,11 +44,11 @@ public class UserAction extends ActionSupport {
 	private String loginName;
 	private String password;
 	
-	private List radd;
-	private List rmodify;
-	private List rdelete;
-	private List rprint;
-	private List rdownload;
+	private List<String> radd;
+	private List<String> rmodify;
+	private List<String> rdelete;
+	private List<String> rprint;
+	private List<String> rdownload;
 	
 	
 	Log log = LogFactory.getLog(this.getClass());
@@ -66,8 +66,7 @@ public class UserAction extends ActionSupport {
 		}
 	}
 	public String login() throws Exception {
-		Map session = ActionContext.getContext().getSession();
-		HttpServletResponse response = ServletActionContext.getResponse();
+		Map<String,Object> session = ActionContext.getContext().getSession();
 		try {
 			int loginFlag = userManager.validLogin(loginName, password);
 			if (loginFlag == UserManager.LOGIN_SUCCESS) {
@@ -81,8 +80,7 @@ public class UserAction extends ActionSupport {
 					message = "admin";
 				}
 			} else if (loginFlag == UserManager.LOGIN_FAIL) {
-				//print(response, RESBONSE_ERROR);
-				message = "error";
+				 message = "error";
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -122,7 +120,7 @@ public class UserAction extends ActionSupport {
 	public String saveRight() throws Exception {
 		List <TreeNodeRight> tl = new ArrayList<TreeNodeRight>();
 		TreeNodeRight t;
-		Set s = new HashSet();
+		Set<Integer> s = new HashSet<Integer>();
 		
 		if(radd !=null && radd.size()>0){
 			for(int i = 0;i< radd.size();i++){
@@ -254,7 +252,6 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String rightList() throws Exception {
-		Map session = ActionContext.getContext().getSession();
 		HttpServletResponse response = ServletActionContext.getResponse();
 		try {
 			response.setHeader("Cache-Control", "no-cache");
@@ -263,17 +260,13 @@ public class UserAction extends ActionSupport {
 			PrintWriter out = response.getWriter();
 			// 调用业务
 			List<TreeNodeRight> list ;
-			// 获取请求参数
-			
+			// 获取请求参数			
 			list = userManager.findUserRight(user);
-
 			// 将list转为json
 			String json = "";
 			if (list != null && list.size() > 0){
 				json = ConvertToJson.ConverListToJsonRight(list);				
 			}
-
-				//json = "[{\"text\":\"节点1\"},{\"text\":\"节点2\"}]";
 			// 将流打到客户端
 			out.print(json);
 			// 清空缓存
@@ -328,10 +321,10 @@ public class UserAction extends ActionSupport {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public List getCl() {
+	public List<User> getCl() {
 		return cl;
 	}
-	public void setCl(List cl) {
+	public void setCl(List<User> cl) {
 		this.cl = cl;
 	}
 	public User getUser() {
@@ -346,34 +339,34 @@ public class UserAction extends ActionSupport {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public List getRadd() {
+	public List<String> getRadd() {
 		return radd;
 	}
-	public void setRadd(List radd) {
+	public void setRadd(List<String> radd) {
 		this.radd = radd;
 	}
-	public List getRmodify() {
+	public List<String> getRmodify() {
 		return rmodify;
 	}
-	public void setRmodify(List rmodify) {
+	public void setRmodify(List<String> rmodify) {
 		this.rmodify = rmodify;
 	}
-	public List getRdelete() {
+	public List<String> getRdelete() {
 		return rdelete;
 	}
-	public void setRdelete(List rdelete) {
+	public void setRdelete(List<String> rdelete) {
 		this.rdelete = rdelete;
 	}
-	public List getRprint() {
+	public List<String> getRprint() {
 		return rprint;
 	}
-	public void setRprint(List rprint) {
+	public void setRprint(List<String> rprint) {
 		this.rprint = rprint;
 	}
-	public List getRdownload() {
+	public List<String> getRdownload() {
 		return rdownload;
 	}
-	public void setRdownload(List rdownload) {
+	public void setRdownload(List<String> rdownload) {
 		this.rdownload = rdownload;
 	}
 }

@@ -7,26 +7,26 @@ body {
 	background-color: #EFFBFB;
 }
 
-/*ÉèÖÃ°´Å¥µÄ¸ß¶È*/
+/*ï¿½ï¿½ï¿½Ã°ï¿½Å¥ï¿½Ä¸ß¶ï¿½*/
 input[type=button],input[type=submit],input[type=reset] {
 	height: 20px;
 	margin-right: 5px;
 	cursor: pointer;
 }
 
-/*ÉèÖÃÎÄ±¾¿òµÄ·ç¸ñ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ä·ï¿½ï¿½*/
 input[type=text],input[type=password],textarea {
 	border: 1px solid #84a1bd;
 	background: #E8FDFF;
 	font-size: 10pt;
 }
 
-/*Êó±ê±äÎªÊÖÐÎ*/
+/*ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½*/
 *[name=selimg] {
 	cursor: pointer;
 }
 
-/*Á´½Ó·ç¸ñ*/
+/*ï¿½ï¿½ï¿½Ó·ï¿½ï¿½*/
 a:link {
 	font-size: 10pt;
 	text-decoration: none;
@@ -43,7 +43,7 @@ a:hover {
 	text-decoration: none;
 }
 
-/*ÐÂÔö±à¼­*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½à¼­*/
 #edit {
 	border-bottom: 1px dotted #999999;
 	border-left: 1px dotted #999999;
@@ -60,7 +60,7 @@ a:hover {
 	text-align: right;
 }
 
-/*°´Å¥ÇøÓò*/
+/*ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½*/
 #btnDiv {
 	height: 10%;
 	width: 100%;
@@ -69,17 +69,17 @@ a:hover {
 	padding-bottom: 10px;
 }
 
-/*°´Å¥ÇøÓòspan*/
+/*ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½span*/
 #btnDiv span {
 	text-align: right;
 }
 
-/*×Ö¶Î²»ÄÜÎª¿ÕÌáÊ¾*/
+/*ï¿½Ö¶Î²ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ê¾*/
 #nel {
 	color: red;
 }
 
-/*½á¹ûÌáÊ¾*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾*/
 #resultTip {
 	text-align: center;
 	background-color: #FFF1A8;
@@ -94,13 +94,13 @@ a:hover {
 	color: green;
 }
 
-/*¸ßÁÁCSS*/
+/*ï¿½ï¿½ï¿½ï¿½CSS*/
 .highlight {
 	background-color: yellow;
 	font-weight: bold;
 }
 
-/*------ ²Ëµ¥ÇøÓò Start ------*/
+/*------ ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ Start ------*/
 #leftMenu a {
 	width: 110px;
 	display: block;
@@ -133,12 +133,12 @@ a:hover {
 	font-weight: bold;
 }
 
-/*------ ÓÒ±ßÀ¸ÌáÊ¾ÐÅÏ¢ Start ------*/
+/*------ ï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ Start ------*/
 #rightTip label {
 	color: red;
 }
 
-/*ÈËÔ±Ê÷DIV*/
+/*ï¿½ï¿½Ô±ï¿½ï¿½DIV*/
 #tree {
 	height: 350px;
 	width: 300px;
@@ -154,8 +154,8 @@ a:hover {
 	line-height: 20px;
 }
 
-/*------ ÁÐ±í Start ------*/
-/*Êý¾ÝÁÐ±í*/
+/*------ ï¿½Ð±ï¿½ Start ------*/
+/*ï¿½ï¿½ï¿½ï¿½Ð±ï¿½*/
 #row th {
 	vertical-align: middle;
 	border-right: #fff 1px solid;
@@ -186,7 +186,7 @@ a:hover {
 	background: #C1CDD8;
 }
 
-/*Ä£¿éÍ·²¿ÌáÊ¾*/
+/*Ä£ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ê¾*/
 #title {
 	text-align:center;
 	background-color: #CEE3F6;
@@ -205,7 +205,7 @@ a:hover {
 	align: absmiddle;
 }
 
-/*²éÑ¯ÇøÓò*/
+/*ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½*/
 #query {
 	vertical-align: middle;
 	border: 1px dotted #999;
@@ -216,20 +216,20 @@ a:hover {
 	border-bottom: none;
 }
 
-/*²éÑ¯ÇøÓòÖÐµÄlabel*/
+/*ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½label*/
 #query label {
 	vertical-align: middle;
 	padding-right: 20px;
 }
 
-/*²éÑ¯Í¼Æ¬*/
+/*ï¿½ï¿½Ñ¯Í¼Æ¬*/
 #queryImg {
 	align: absmiddle;
 	cursor: pointer;
 	padding-left: 50px;
 }
 
-/*------ ÑéÖ¤²å¼þCSS Start ------*/
+/*------ ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½CSS Start ------*/
 .onShow {
 	background: url(../images/validitor/onShow.gif) no-repeat;
 	padding-left: 25px;

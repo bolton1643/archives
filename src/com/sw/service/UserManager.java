@@ -49,7 +49,7 @@ public interface UserManager {
 	 */
 	void changePwd(Integer userId,String newPwd);
 	
-	List userList();
+	List<User> userList();
 	
 	public User getUserById(User user);
 	
@@ -57,7 +57,7 @@ public interface UserManager {
 	
 	public List userRight(User user);
 	
-	public List findUserRight(User user);
+	public List<TreeNodeRight> findUserRight(User user);
 	
 	public void saveRight(List <TreeNodeRight> tl,int userId);
 }

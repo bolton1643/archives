@@ -17,19 +17,25 @@ FROM t12  $P!{whereCond}]]>
 	<detail>
 		<band height="607">
 			<textField>
-				<reportElement isPrintRepeatedValues="false" x="50" y="35" width="111" height="20"/>
+				<reportElement isPrintRepeatedValues="false" x="50" y="10" width="111" height="30"/>
 				<textElement>
-					<font isStrikeThrough="false"/>
+					<font size="20" isStrikeThrough="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{VFWO1O5CXQF}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="FixRelativeToBottom" x="50" y="130" width="15" height="434"/>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="57" width="17" height="500"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="Serif" size="24" isStrikeThrough="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{V15QFOGX34FOBL}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="39" y="7" width="87" height="40"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="40" y="57" width="100" height="500" backcolor="#FFFFFF"/>
+			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>

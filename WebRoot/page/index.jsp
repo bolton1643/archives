@@ -18,87 +18,71 @@
         var tab = null;
         var accordion = null;
         var tree = null;
-        $(function ()
-        {
-            //布局
+        $(function()
+        {//begin of func
             $("#layout1").ligerLayout({ leftWidth: 190, height: '100%', onHeightChanged: f_heightChanged });
-            
-
             var height = $(".l-layout-center").height();
-
             //Tab
             $("#framecenter").ligerTab({ height: height });
-            
-            //树
+                                //树
             $("#tree1").ligerTree({
                 url: 'tree.action?root=source',
-	            idFieldName :'id',
-	            parentIDFieldName :'pid',
+                idFieldName :'id',
+                parentIDFieldName :'pid',
                 onBeforeExpand: onBeforeExpand,
                 onExpand: onExpand,
                 checkbox: false,
                 nodeWidth: 120,
                 attribute: ['nodename', 'url'],
                 onSelect: function (node)
-                {
+                {//begin of func(node)
                 	if(node.data.isLeaf == 'false') return;
                     if (!node.data.url) return;
                     var tabid = $(node.target).attr("tabid");
                     if (!tabid)
-                    {
+                    {//begin of
                         tabid = new Date().getTime();
                         $(node.target).attr("tabid", tabid)
-                    }
+                    }//end of if
                     if ($(">ul >li", tab.tab.links).length >= 100)
-                    {
+                    {//begin of
                         var currentTabid = $("li.l-selected", tab.tab.links).attr("tabid"); //当前选择的tabid
                         if (currentTabid == "home") return;
                         tab.overrideTabItem(currentTabid, { tabid: tabid, url: node.data.url, text: node.data.text });
                         return;
-                    }
+                    }//end of if
                     f_addTab(tabid, node.data.text, node.data.url);
-                }
-            });
+                }//end of if
+            });//end of tree
                 
-                tab = $("#framecenter").ligerGetTabManager();
+            tab = $("#framecenter").ligerGetTabManager();
                 //accordion = $("#accordion1").ligerGetAccordionManager();
-                tree = $("#tree1").ligerGetTreeManager();
-                $("#pageloading").hide();
-        });
+            tree = $("#tree1").ligerGetTreeManager();
+            $("#pageloading").hide();
+        });//end of 
         
         function onBeforeExpand(note)
-        {
-            //var note = tree.getSelected(); 
-            //alert('选择的是:' + note.data.text);
-            //alert(note.data.id)
+        {//begin 
             if (true)
-            {
-                //tree.loadData(note.target,'tree.action','root='+note.data.id+'&');
-                //这里模拟一个加载节点的方法，append方法也用loadData(target,url)代替
-                
-                /*
-                tree.append(note.target, [
-                { text: note.data.text + "'s child1" },
-                { text: note.data.text + "'s child2" },
-                { text: note.data.text + "'s child3" }
-               ]);
-               */
-            }
-        }
+            {//beigin fo 
+            }//end
+        }//end
+        
         function onExpand(note)
-        { 
-        }
+        {//begin 
+        }//end
+        
         function f_heightChanged(options)
-        {
+        {//begin of func
             if (tab)
                 tab.addHeight(options.diff);
             if (accordion && options.middleHeight - 24 > 0)
                 accordion.setHeight(options.middleHeight - 24);
-        }
+        }//end
         function f_addTab(tabid,text, url)
-        { 
+        { //begin
             tab.addTabItem({ tabid : tabid,text: text, url: url });
-        } 
+        } //end
                         
      </script> 
 <style type="text/css"> 

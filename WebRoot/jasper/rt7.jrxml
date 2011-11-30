@@ -26,12 +26,12 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="10" splitType="Stretch"/>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="15" width="555" height="20"/>
+				<reportElement x="0" y="0" width="555" height="35"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -40,23 +40,23 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="500" splitType="Stretch">
+		<band height="600" splitType="Stretch">
 			<staticText>
-				<reportElement style="dl" x="278" y="272" width="247" height="20"/>
+				<reportElement style="dl" x="278" y="443" width="247" height="20"/>
 				<textElement textAlignment="Left" markup="none">
 					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[整理人：　　　　　　　　　　　　　]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="dl" x="278" y="306" width="247" height="20"/>
+				<reportElement style="dl" x="278" y="477" width="247" height="20"/>
 				<textElement textAlignment="Left" markup="none">
 					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[检查人：　　　　　　　　　　　　　]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="dl" x="278" y="340" width="247" height="20"/>
+				<reportElement style="dl" x="278" y="517" width="247" height="20"/>
 				<textElement textAlignment="Left" markup="none">
 					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -69,13 +69,12 @@
 				</textElement>
 				<text><![CDATA[卷内文件情况说明]]></text>
 			</staticText>
-			<staticText>
-				<reportElement style="bx" x="0" y="0" width="535" height="448"/>
-				<textElement textAlignment="Left" markup="none">
-					<font fontName="Serif" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="112" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="600"/>
+			</rectangle>
 		</band>
 	</columnHeader>
 	<detail>

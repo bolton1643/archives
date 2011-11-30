@@ -85,10 +85,8 @@ Form.prototype.initFormSubmit = function(formName) {
 		success : showResponse,
 		clearForm : false
 	};
-
 	// 设置监听表单在修改时使用
-	this.setEditForm(formName);
-	
+	this.setEditForm(formName);	
 	$('#' + formName).submit(function() {
 		$(this).ajaxSubmit(formSubmitOptions);
 		log.debug('提交……');
@@ -117,6 +115,7 @@ Form.prototype.clearForm = function(formName, callback) {
 		if(event != null)
 			eventEle = $(event.srcElement);
 	} catch (e) {}
+	
 	var form;
 	if(typeof formName == 'object')
 		form = $(this).parents('form');
@@ -157,7 +156,6 @@ Form.prototype.clearForm = function(formName, callback) {
 Form.prototype.beforeSubmit = function(submitBtnId) {
 	if(typeof submitBtnId == 'undefined')
 		submitBtnId = 'submit';
-	
 	$('#' + submitBtnId).attr('value', '正在提交……').attr('disabled', true);
 };
 

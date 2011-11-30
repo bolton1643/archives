@@ -19,8 +19,20 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 public class MetaDataImpl extends HibernateDaoSupport implements MetaData {
 	private static Logger logger = Logger.getLogger(MetaDataImpl.class);
 	
-	private HashMap typeMap = new HashMap();
+	private HashMap<String,String> typeMap = new HashMap<String,String>();
 
+	private static Connection getConnection()throws ClassNotFoundException,SQLException{
+		String driver="com.mysql.jdbc.Driver";
+		String url="jdbc:mysql://localhost/rf2";
+		String user="root";
+		String password="123456";
+		Class.forName(driver);
+		Connection conn=DriverManager.getConnection(url,user,password);
+	
+	return conn;
+
+}
+	
 	private MetaDataImpl() {
 		typeMap.put("INT", "整数");
 		typeMap.put("VARCHAR", "字符串");
@@ -29,20 +41,18 @@ public class MetaDataImpl extends HibernateDaoSupport implements MetaData {
 	};
 
 	public boolean operateTable(String sql) {
-		Session s = getHibernateTemplate().getSessionFactory()
-				.getCurrentSession();
+		Session s = getHibernateTemplate().getSessionFactory().openSession();
 		s.createSQLQuery(sql).executeUpdate();
 		s.setFlushMode(FlushMode.COMMIT);
-		// if (s != null)
-		// s.close();
+		
+		
+		if (s != null)
+		 s.close();
 		return true;
 	}
 
 	public List<MetaDataRow> getMetaData(String tName) {
-		Session s = getHibernateTemplate().getSessionFactory()
-				.getCurrentSession();
-		Connection con = s.connection();
-
+		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
@@ -51,6 +61,7 @@ public class MetaDataImpl extends HibernateDaoSupport implements MetaData {
 		List<MetaDataRow> m = new ArrayList<MetaDataRow>();
 
 		try {
+			con = getConnection();
 			// 获取表结构字段信息
 			String sql = "select * from " + tName + " where id=0";
 

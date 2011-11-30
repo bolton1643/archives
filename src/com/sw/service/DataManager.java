@@ -5,7 +5,7 @@ import java.util.List;
 public interface DataManager {
 	int add(String sql) throws Exception;
 
-	public List list(String tb,String where, String cpage,int pageSize)
+	public List<Object[]> list(String tb,String where, String cpage,int pageSize)
 			throws Exception;
 
 	int update(String sql) throws Exception;

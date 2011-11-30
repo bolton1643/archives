@@ -200,7 +200,7 @@ padding-right: 10px;
 }
 .l-grid-hd-cell-drophandle
 {
-      width:5px; height:22px; cursor:col-resize;  float:right;position:absolute; top:0px; right:-3px;
+    width:5px; height:22px; cursor:col-resize;  float:right;position:absolute; top:0px; right:-3px;
 } 
 .l-grid-hd-cell-text
 {
