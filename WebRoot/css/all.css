@@ -4,13 +4,13 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 	font-size: 10pt;
-	background-color: #EFFBFB;
+	background-color: #FFFFFF;
 }
 
 /*���ð�ť�ĸ߶�*/
 input[type=button],input[type=submit],input[type=reset] {
-	height: 20px;
-	margin-right: 5px;
+	height: 22px;
+	margin-right: 0px;
 	cursor: pointer;
 }
 

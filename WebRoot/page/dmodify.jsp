@@ -10,7 +10,6 @@
 		<link type="text/css" href="css/bruce.css" rel="stylesheet" />
 		<link type="text/css" href="css/ligerui-common.css" rel="stylesheet" />
 		<script type="text/javascript" src="js/jquery-last.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.7.custom.min.js"></script>		
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$(function() {
@@ -39,31 +38,41 @@
 			<s:elseif test="dType=='日期'">
 				<li>
 				  <span class="bruce_txt_1"><s:property value="dNotes" /></span>
-					<span class="txt_2"><input class="txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="datepicker"	style="width:30;" /></span>
+					<span class="bruce_txt_2"><input class="txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="datepicker"	style="width:30;" /></span>
 				</li>				
 			</s:elseif>
 			<s:elseif test="dName.lastIndexOf('_PHOTO')>=0">
 			  <li>
          <span class="bruce_txt_1"><s:property value="dNotes" /></span>
-         <span class="txt_2">
-           <input class="txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />
-           <input class="txt_input" type="button" name="选择图片" value="选择图片"  onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />        
+         <span class="bruce_txt_2"><input class="bruce_txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" /></span>
+         <span class="bruce_txt_2">
+           	<div class="btn" style="margin:0 auto;float:left">
+           		<div class="btn_l"></div>
+           		<input class="btn_m" type="button" name="选择图片"
+           			value="选择图片"
+           			onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=150,toolbar=no,location=no')" />
+           		<div class="btn_r"></div>
+           	</div>
          </span>
        </li>
 			</s:elseif>
 			<s:elseif test="dType=='文件'">
        <li>
          <span class="bruce_txt_1"><s:property value="dNotes" /></span>
-           <span class="txt_2">
-             <input class="txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" />
-            <input  class="txt_input" type="button" name="选择文件" value="选择文件"  onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')" />
-           </span>
+         <span class="bruce_txt_2"><input class="bruce_txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" /></span>
+         <span class="bruce_txt_2">
+            <div class="btn" style="margin:0 auto;float:left">
+                <div class="btn_l"></div>
+                <input class="btn_m" type="button" name="选择文件" value="选择文件"  onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=150,toolbar=no,location=no')" />
+                <div class="btn_r"></div>
+            </div> 
+         </span>
        </li>
 			</s:elseif>
 			<s:else>
        <li>
           <span class="bruce_txt_1"><s:property value="dNotes" /></span>
-          <span class="txt_2"><input class="txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" /></span>
+          <span class="bruce_txt_2"><input class="txt_input" type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />" /></span>
         </li>			  					
 			</s:else>
     </s:iterator>

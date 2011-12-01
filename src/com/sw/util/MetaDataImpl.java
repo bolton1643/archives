@@ -17,202 +17,160 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class MetaDataImpl extends HibernateDaoSupport implements MetaData {
-	private static Logger logger = Logger.getLogger(MetaDataImpl.class);
-	
-	private HashMap<String,String> typeMap = new HashMap<String,String>();
+    private static Logger logger = Logger.getLogger(MetaDataImpl.class);
+    private HashMap<String,String> typeMap = new HashMap<String,String>();
 
-	private static Connection getConnection()throws ClassNotFoundException,SQLException{
-		String driver="com.mysql.jdbc.Driver";
-		String url="jdbc:mysql://localhost/rf2";
-		String user="root";
-		String password="123456";
-		Class.forName(driver);
-		Connection conn=DriverManager.getConnection(url,user,password);
-	
-	return conn;
+    private static Connection getConnection() throws ClassNotFoundException,SQLException{
+        String driver="com.mysql.jdbc.Driver";
+        String url="jdbc:mysql://localhost/rf2";
+        String user="root";
+        String password="123456";
+        Class.forName(driver);
+        Connection conn=DriverManager.getConnection(url,user,password);
+        return conn;
+    }//end of 
+    
+    private MetaDataImpl() {
+        typeMap.put("INT", "整数");
+        typeMap.put("VARCHAR", "字符串");
+        typeMap.put("DATETIME", "日期");
+        typeMap.put("DOUBLE", "小数");
+    };//end of 
 
-}
-	
-	private MetaDataImpl() {
-		typeMap.put("INT", "整数");
-		typeMap.put("VARCHAR", "字符串");
-		typeMap.put("DATETIME", "日期");
-		typeMap.put("DOUBLE", "小数");
-	};
+    public boolean operateTable(String sql) {
+        Session s = getHibernateTemplate().getSessionFactory().openSession();
+        s.createSQLQuery(sql).executeUpdate();
+        s.setFlushMode(FlushMode.COMMIT);
+        if (s != null)
+           s.close();
+        return true;
+    }//end of oper
 
-	public boolean operateTable(String sql) {
-		Session s = getHibernateTemplate().getSessionFactory().openSession();
-		s.createSQLQuery(sql).executeUpdate();
-		s.setFlushMode(FlushMode.COMMIT);
-		
-		
-		if (s != null)
-		 s.close();
-		return true;
-	}
+    public List<MetaDataRow> getMetaData(String tName) {
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        PreparedStatement pstmt = null;
+        ResultSetMetaData rsmd = null;
 
-	public List<MetaDataRow> getMetaData(String tName) {
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		ResultSetMetaData rsmd = null;
+        List<MetaDataRow> m = new ArrayList<MetaDataRow>();
 
-		List<MetaDataRow> m = new ArrayList<MetaDataRow>();
+        try {
+            con = getConnection();
+            String sql = "select * from " + tName + " where id=0";  //获取表结构字段信息
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            rsmd = rs.getMetaData(); // 获取字段名
 
-		try {
-			con = getConnection();
-			// 获取表结构字段信息
-			String sql = "select * from " + tName + " where id=0";
+            // 获取备注，作为字段中文名称
+            sql = "select column_comment from information_schema.columns where table_schema='rf2' and table_name='" + tName + "'";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
 
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			rsmd = rs.getMetaData(); // 获取字段名
+            if (rsmd != null) {
+                int count = rsmd.getColumnCount();
+                for (int i = 1; i <= count; i++) {
+                    MetaDataRow mdr = new MetaDataRow();
+                    if (rsmd.getColumnName(i) != null) {
+                        mdr.setDName(rsmd.getColumnName(i));
+                    }//endofif
 
-			// 获取备注，作为字段中文名称
-			sql = "select column_comment from information_schema.columns where table_schema='rf2' and table_name='"
-					+ tName + "'";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+                    if (rsmd.getColumnTypeName(i) != null)
+                        mdr.setDType((String) typeMap.get(rsmd.getColumnTypeName(i)));
+                    mdr.setDLength(rsmd.getColumnDisplaySize(i));
+                    if (1 == rsmd.isNullable(i))
+                        mdr.setDAllowNull("允许为空");
+                    else
+                        mdr.setDAllowNull("不允许为空");
 
-			if (rsmd != null) {
-				int count = rsmd.getColumnCount();
-				for (int i = 1; i <= count; i++) {
-					MetaDataRow mdr = new MetaDataRow();
-					if (rsmd.getColumnName(i) != null) {
-						mdr.setDName(rsmd.getColumnName(i));
-					}
+                    if (rs.next()) {
+                        mdr.setDNotes(rs.getString(1));
 
-					if (rsmd.getColumnTypeName(i) != null)
-						mdr.setDType((String) typeMap.get(rsmd
-								.getColumnTypeName(i)));
-					mdr.setDLength(rsmd.getColumnDisplaySize(i));
-					if (1 == rsmd.isNullable(i))
-						mdr.setDAllowNull("允许为空");
-					else
-						mdr.setDAllowNull("不允许为空");
+                        if (mdr.getDName().endsWith("_FILE")) {
+                            mdr.setDType("文件");
+                        }//endof_FILE
+                    }//enfofrs.next
 
-					if (rs.next()) {
-						mdr.setDNotes(rs.getString(1));
+                    m.add(mdr);
+                }//endoffor
+            }//endoftry
+        } catch (SQLException ex2) {
+            logger.error(ex2.getMessage());
+            ex2.printStackTrace();
+        } catch (Exception ex2) {
+            logger.error(ex2.getMessage());
+            ex2.printStackTrace();
+        } finally {
+            rsmd = null;
+            try {
+                if (rs != null) {
+                    rs.close();
+                }//endofrs != null
+                if (stmt != null) {
+                    stmt.close();
+                }//endofstmt
+                if (con != null) {
+                    con.close();
+                }//endofcon
+            } catch (SQLException ex1) {
+                logger.error(ex1.getMessage());
+            }//end
+        }//endoffinally
+        return m;
+    }//endodfunc
 
-						if (mdr.getDName().endsWith("_FILE")) {
-							mdr.setDType("文件");
-						}
-					}
+    
+    public static void test(){
+        String driver = "com.mysql.jdbc.Driver";
+        String strUrl = "jdbc:mysql://localhost/rf";
+        Statement stmt = null;
+        ResultSet rs = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSetMetaData rsmd = null;
 
-					m.add(mdr);
-				}
+        try {
+            Class.forName(driver);
+            conn = DriverManager.getConnection(strUrl, "root", "123456");
+            pstmt = conn.prepareStatement("SELECT * FROM t1");
 
-			}
-		} catch (SQLException ex2) {
-			logger.error(ex2.getMessage());
-			ex2.printStackTrace();
-		} catch (Exception ex2) {
-			logger.error(ex2.getMessage());
-			ex2.printStackTrace();
-		} finally {
-			rsmd = null;
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (stmt != null) {
-					stmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-				// if (s != null)
-				// s.close();
-			} catch (SQLException ex1) {
-				logger.error(ex1.getMessage());
-			}
-		}
-		return m;
-	}
+            rs = pstmt.executeQuery();
+            rsmd = rs.getMetaData(); // 获取字段名
+            if (rsmd != null) {
+                int count = rsmd.getColumnCount();
+                for (int i = 1; i <= count; i++) {
+                    System.out.println(rsmd.getColumnName(i) + ":"
+                            + rsmd.getColumnTypeName(i) + ":"
+                            + rsmd.getColumnDisplaySize(i));
 
-	public static void main(String[] args) {
+                }//end
+            }//endof rsmd != null
+        }//endof
+        catch (SQLException ex2) {
+            ex2.printStackTrace();
+        }//end
+        catch (Exception ex2) {
+            ex2.printStackTrace();
+        } finally {
+            rsmd = null;
+            try {
+                if (rs != null) {
+                    rs.close();
+                    if (stmt != null) {
+                        stmt.close();
+                    }//e
 
-		String driver = "com.mysql.jdbc.Driver";
-
-		String strUrl = "jdbc:mysql://localhost/rf";
-
-		Statement stmt = null;
-
-		ResultSet rs = null;
-
-		Connection conn = null;
-
-		PreparedStatement pstmt = null;
-
-		ResultSetMetaData rsmd = null;
-
-		try {
-			Class.forName(driver);
-
-			conn = DriverManager.getConnection(strUrl, "root", "123456");
-
-			pstmt = conn.prepareStatement("SELECT * FROM t1");
-
-			rs = pstmt.executeQuery();
-
-			rsmd = rs.getMetaData(); // 获取字段名
-
-			if (rsmd != null) {
-
-				int count = rsmd.getColumnCount();
-
-				for (int i = 1; i <= count; i++) {
-
-					System.out.println(rsmd.getColumnName(i) + ":"
-							+ rsmd.getColumnTypeName(i) + ":"
-							+ rsmd.getColumnDisplaySize(i));
-
-				}
-
-			}
-
-		}
-
-		catch (SQLException ex2) {
-
-			ex2.printStackTrace();
-
-		}
-
-		catch (Exception ex2) {
-
-			ex2.printStackTrace();
-
-		} finally {
-
-			rsmd = null;
-
-			try {
-
-				if (rs != null) {
-
-					rs.close();
-
-					if (stmt != null) {
-
-						stmt.close();
-
-					}
-
-					if (conn != null) {
-
-						conn.close();
-
-					}
-
-				}
-
-			}
-
-			catch (SQLException ex1) {
-
-			}
-		}
-	}
+                    if (conn != null) {
+                        conn.close();
+                    }//end
+                }//end
+            }//end
+            catch (SQLException ex1) {
+            }//end
+        }//endoffinalyy
+    } //end
+    
+    public static void main(String[] args) {
+        
+    }//end
 }

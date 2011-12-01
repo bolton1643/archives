@@ -13,7 +13,6 @@
 			body{ font: 75.5% "Trebuchet MS", sans-serif; margin: 50px;}
 		</style>		
 		<script type="text/javascript" src="js/jquery-last.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.7.custom.min.js"></script>		
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$(function() {

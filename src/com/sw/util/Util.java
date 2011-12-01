@@ -6,7 +6,7 @@ public class Util {
 	   * 生成24位UUID
 	   * @return UUID 24bit string
 	   */
-	  public static synchronized String getUUID() {
+	public static synchronized String getUUID() {
 		count++;
 		long time = System.currentTimeMillis();
 

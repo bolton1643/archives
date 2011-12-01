@@ -3,7 +3,6 @@ package com.sw.action;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -16,12 +15,10 @@ import com.sw.util.PropertiesReader;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UploadAction extends ActionSupport {
-	private static Logger logger = Logger.getLogger(UploadAction.class);
-	
-	// private File[] file;//文件
-	// private String[] fileContentType; // 文件类型
-	// private String[] fileFileName; // 文件名称
+    private static final long serialVersionUID = 1L;
 
+    private static Logger logger = Logger.getLogger(UploadAction.class);
+	
 	private String p;
 	private String fileName;
 	private String cid;//用来存字段名称

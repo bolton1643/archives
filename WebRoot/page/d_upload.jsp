@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@include file="common/global.jsp" %>
 <html>
 <head>
 <script type="text/javascript" src="js/prototype.js"></script>
 <script type="text/javascript" src="js/AjaxWrapper.js"></script>
-
+<link type="text/css" href="css/bruce.css" rel="stylesheet" />
 <title>上传文件</title>
 
 <script type="text/javascript">
@@ -49,37 +48,41 @@
 	String p = (String)request.getParameter("p");
 	String cid = (String)request.getParameter("cid");
 %>
-	    <table align="center" width="40%">
-    <tr>
-    <td>
-    <s:fielderror  cssStyle="color=red"/>
-    </td>
-    </tr>
-    </table>
+<div class="bruce_txt">
+  <ul>
+    <li>
+       <s:fielderror  cssStyle="color=red"/>       
+    </li>               
 	<s:form id="fileUploadForm" name="fileUploadForm" action="dupload.action" theme="simple" method="post" enctype="multipart/form-data">
     <input type="hidden" id="p" name="p" value="<%=p %>">
     <input type="hidden" id="cid" name="cid" value="<%=cid %>">
-    <table align="center" width="40%" border="1">
-    <tr  class="formword"><td colspan="2">
-    <font color="#FF00FF">
-    	注意： 上传大文件，需要较长的时间，请耐心等待 。 
-    </font>
-    </td></tr>
-    <tr>
-    <td>文件</td>
-    <td id="more">
-    <s:file name="file" id="file"></s:file><!--  <input type="button" value="更多.." onclick="addMore()"> -->
-    </td>
-    </tr>  
- 
-    <tr>
-    <td><input type="submit" name="uploadButton" id="uploadButton" value="开始上传"/></td>
-    <td><input type="button" name="cancelUploadButton" id="cancelUploadButton" value="取消上传"/><br></td>
-    
-    </tr>     
-	</table>
-    	
+    <li>
+        <span class="bruce_txt_3"><font color="#FF00FF">注意： 上传大文件，需要较长的时间，请耐心等待   </font></span>         
+    </li>
+    <li>
+        <span class="bruce_txt_1">文件</span>
+        <span class="bruce_txt_2"><s:file name="file" id="file"></s:file></span>
+    </li>               
+    <li>
+        <span class="bruce_txt_1"></span>
+        <span class="bruce_txt_4">
+           <div class="btn" style="margin:0 auto;float:left">
+                  <div class="btn_l"></div>
+                  <input class="btn_m" type="submit" name="uploadButton" id="uploadButton" value="开始上传"/>  
+                  <div class="btn_r"></div>
+            </div>
+        </span>
+        <span class="bruce_txt_4">
+           <div class="btn" style="margin:0 auto;float:left">
+                  <div class="btn_l"></div>
+                  <input class="btn_m" type="button" name="cancelUploadButton" id="cancelUploadButton" value="取消上传"/>
+                  <div class="btn_r"></div>
+            </div>
+        </span>
+     </li>    	
     </s:form>
+</ul>
+</div>
 
 	<div id="progressBar">
 	<div id="theMeter">
@@ -91,8 +94,6 @@
         <div id="progressStatusText"></div>
    </div>
    
-
-
 <script>
 Element.hide('progressBar');
 Event.observe('fileUploadForm','submit',startProgress,false);
