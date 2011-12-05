@@ -6,12 +6,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <script type="text/javascript" src="js/jquery-last.js"></script>
-  <style type="text/css">
-    @IMPORT url("css/weebox/weebox.css");
-    @IMPORT url("css/validator/validator.css");
-    @IMPORT url("css/bruce.css");
-    @IMPORT url("css/ligerui-all.css";)
-</style>
+  <script type="text/javascript" src="js/ligerui.all.js"></script>
+  <link href="css/weebox/weebox.css" rel="stylesheet" type="text/css"/>
+  <link href="css/validator/validator.css" rel="stylesheet" type="text/css"/>  
+  <link href="css/ligerui-all.css" rel="stylesheet" type="text/css"/>
+  <link href="css/bruce.css" rel="stylesheet" type="text/css"/>
 <title>编辑子模板</title>
 <script type="text/javascript">
 function testFunction(id){
@@ -47,20 +46,22 @@ function rm(theRow){
   tb.removeChild(theRow);
 }
 
-  $(document).ready(function(){
+$(document).ready(function(){
     $("#btn").click(function(){
       var insertPos = $("#insertPosition");
-      var trNode = $('<li><span class="bruce_page_txt_200"><input class="bruce_page_txt_input" name="dNotes" id="dNotes" type="text"/></span><span class="bruce_page_txt_4"> <select class="l-hidden" id="dType" name="dType"><option>整数</option><option>字符串</option><option>日期</option><option>小数</option><option>文件</option></select> </span> <span class="bruce_page_txt_200"><input class="bruce_page_txt_input" name="dLength" id="dLength" type="text"/></span> <span class="bruce_page_txt_4"> <select id="dAllowNull" name="dAllowNull"><option>允许为空</option><option>不允许为空</option></select></span> <span class="bruce_page_txt_4"> <div class="btn" style="margin:0 auto;float:left"> <div class="btn_l"></div> <input class="btn_m" type="button" value="删除"  onclick="rm(this.parentNode.parentNode.parentNode);"/> <div class="btn_r"></div> </div> </span> </li>');
+      var trNode = $('<li><span class="bruce_page_txt_150"><input class="bruce_page_txt_input" name="dNotes" id="dNotes" type="text"/></span><span class="bruce_page_txt_150"> <select id="dType" name="dType" ltype="select" class="l-hidden"><option>整数</option><option>字符串</option><option>日期</option><option>小数</option><option>文件</option></select> </span> <span class="bruce_page_txt_150"><input class="bruce_page_txt_input" name="dLength" id="dLength" type="text"/></span> <span class="bruce_page_txt_150" > <select id="dAllowNull" name="dAllowNull" ltype="select" class="l-hidden"><option>允许为空</option><option>不允许为空</option></select></span> <span class="bruce_page_txt_150"> <div class="btn" style="margin:0 auto;float:left"> <div class="btn_l"></div> <input class="btn_m" type="button" value="删除"  onclick="rm(this.parentNode.parentNode.parentNode);"/> <div class="btn_r"></div> </div> </span> </li>');
       //var trNode = $("<tr align='left'><td><input name='dNotes' id='dNotes' type='text'/></td><td><select id='dType' name='dType'><option>整数</option><option>字符串</option><option>日期</option><option>小数</option><option>文件</option></select></td><td><input name='dLength' id='dLength' value='11' type='text'/></td><td><select id='dAllowNull' name='dAllowNull'><option>允许为空</option><option>不允许为空</option></select></td><td><input type='button' value='删除' onclick='rm(this.parentNode.parentNode);'/></td></tr>");
       insertPos.append(trNode);
+      $("#trEditForm").ligerForm();
     });//end
+    $("#trEditForm").ligerForm();
 });
 </script>
 
 </head>
 <body>
 <div class="bruce_page_txt">
-<ul>
+<ul style="list-style-type:none;width:800px;margin:10px 10px;">
   <li>
      <span class="bruce_page_txt_80">
        <div class="btn">
@@ -88,11 +89,11 @@ function rm(theRow){
       <div class="bruce_page_txt"><!-- line 2 for table -->          　
         <ul id="insertPosition">
         <li style="font-size:14px">
-            <span class="bruce_page_txt_200"><font style="font-weight: bold;" >字段名称</font></span>
-            <span class="bruce_page_txt_4"><font style="font-weight: bold;" >字段类型</font></span>
-            <span class="bruce_page_txt_200"><font style="font-weight: bold;" >字段长度</font></span>
-            <span class="bruce_page_txt_4"><font style="font-weight: bold;" >允许为空</font></span>
-            <span class="bruce_page_txt_4">
+            <span class="bruce_page_txt_150"><font style="font-weight: bold;" >字段名称</font></span>
+            <span class="bruce_page_txt_150"><font style="font-weight: bold;" >字段类型</font></span>
+            <span class="bruce_page_txt_150"><font style="font-weight: bold;" >字段长度</font></span>
+            <span class="bruce_page_txt_150"><font style="font-weight: bold;" >允许为空</font></span>
+            <span class="bruce_page_txt_150">
               <div class="btn" style="margin:0 auto;float:left">
                 <div class="btn_l"></div>
                 <input class="btn_m" id="btn" type="button" value="增加" />
@@ -104,17 +105,17 @@ function rm(theRow){
            <s:if test="dName.lastIndexOf('_PHOTO')>=0 "></s:if>
            <s:elseif test="(dName=='ID' or dName='ID2')">
            <li>
-             <span class="bruce_page_txt_200">编号</span>
-             <span class="bruce_page_txt_4">整数</span>
-             <span class="bruce_page_txt_200">不允许为空</span>
-             <span class="bruce_page_txt_4">&nbsp</span>
+             <span class="bruce_page_txt_150">编号</span>
+             <span class="bruce_page_txt_150">整数</span>
+             <span class="bruce_page_txt_150">不允许为空</span>
+             <span class="bruce_page_txt_150">&nbsp</span>
            </li>
            </s:elseif>
            <s:else>
              <li>
-               <span class="bruce_page_txt_200"><input class="bruce_page_txt_input" name='dNotes' id='dNotes' type='text' value="<s:property value="dNotes" />"/></span>
-               <span class="bruce_page_txt_4">
-                 <select class="l-hidden" name="dType">
+               <span class="bruce_page_txt_150"><input class="bruce_page_txt_input" name='dNotes' id='dNotes' type='text' value="<s:property value="dNotes" />"/></span>
+               <span class="bruce_page_txt_150">
+                 <select name="dType" ltype="select" class="l-hidden">
                    <s:if test="%{dType=='整数'}" ><option selected="selected">整数</option></s:if>
                    <s:else><option >整数</option></s:else>
                    <s:if  test="%{dType=='字符串'}" ><option selected="selected">字符串</option></s:if>
@@ -127,9 +128,9 @@ function rm(theRow){
                    <s:else><option >文件</option></s:else>
                   </select>
                </span>
-               <span class="bruce_page_txt_200"><input class="bruce_page_txt_input" name='dLength' id='dLength' type='text' value="<s:property value="dLength" />"/></span>
-               <span class="bruce_page_txt_4">
-                 <select name="dAllowNull">
+               <span class="bruce_page_txt_150"><input class="bruce_page_txt_input" name='dLength' id='dLength' type='text' value="<s:property value="dLength" />"/></span>
+               <span class="bruce_page_txt_150">
+                 <select name="dAllowNull" ltype="select" class="l-hidden">
                    <s:else><option >varchar</option></s:else>
                    <s:if  test="%{dAllowNull=='允许为空'}" ><option selected="selected">允许为空</option></s:if>
                    <s:else><option >允许为空</option></s:else>   
@@ -137,7 +138,7 @@ function rm(theRow){
                    <s:else><option >不允许为空</option></s:else>   
                    </select>
                  </span>
-               <span class="bruce_page_txt_4">
+               <span class="bruce_page_txt_150">
                    <div class="btn" style="margin:0 auto;float:left">
                      <div class="btn_l"></div>
                      <input class="btn_m" type='button' value='删除'  onclick='rm(this.parentNode.parentNode.parentNode);'/>
