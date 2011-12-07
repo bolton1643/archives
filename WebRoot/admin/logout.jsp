@@ -10,11 +10,11 @@
 </head>
 <body>
 <%
-	session.setAttribute("user","");
-	session.setAttribute("username","");
-	
-	String c = request.getHeader("host")+request.getContextPath();
-	response.sendRedirect("http://"+c+"/page/login.jsp");
+   session.setAttribute("user","");
+   session.setAttribute("username","");
+   
+   String c = request.getHeader("host")+request.getContextPath();
+   response.sendRedirect("http://"+c+"/page/login.jsp");
 %>
 
 </body>

@@ -9,7 +9,7 @@
         <script type="text/javascript" src="js/ligerui.all.js"></script>
         <link href="css/ligerui-all.css" rel="stylesheet" type="text/css"/>
         <link href="css/bruce.css" rel="stylesheet" type="text/css"/>
-        <title>增加子模板</title>
+        <title>增加子菜单</title>
 <script type="text/javascript">
 $(document).ready(function(){    
     $("#trAddForm").ligerForm();
@@ -23,8 +23,7 @@ $(document).ready(function(){
             <input type="hidden" name="expanded" id="expanded" value="0"/> 
             <input type="hidden" name="isfolder" id="isfolder" value="1"/> 
             子菜单名称： <input type="text" name="text" size="40" />&nbsp;
-            <br>
-            <input type="submit" value="提交"  class="l-button l-button-submit"/>
+            <input type="submit" value="提交"  class="bruce-button"/>
         </form>
         </div>
     </body>

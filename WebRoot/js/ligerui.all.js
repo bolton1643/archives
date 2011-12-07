@@ -5449,8 +5449,7 @@ if(typeof (LigerUIManagers) == "undefined") LigerUIManagers = {};
                 },
                 //覆盖
                 overrideTabItem : function(targettabid,options){
-                    if(p.onBeforeOverrideTabItem && p.onBeforeOverrideTabItem(targettabid)==false) return false;
-
+                if(p.onBeforeOverrideTabItem && p.onBeforeOverrideTabItem(targettabid)==false) return false;
                     var tabid = options.tabid;
                     if (tabid == undefined) tabid = g.getNewTabid();
                     var url = options.url;
@@ -5460,10 +5459,9 @@ if(typeof (LigerUIManagers) == "undefined") LigerUIManagers = {};
                     var showClose = options.showClose;
                     var height = options.height;
                     //如果已经存在
-                    if (g.isTabItemExist(tabid))
-                    { 
+                    /*if (g.isTabItemExist(tabid)){ 
                         return;
-                    }
+                    } modified by wuwb 2011-12-06*/ 
                     var tabitem = $("li[tabid="+targettabid+"]", g.tab.links.ul); 
                     var contentitem = $(".l-tab-content-item[tabid="+targettabid+"]",g.tab.content);
                     if(!tabitem || !contentitem) return ;  

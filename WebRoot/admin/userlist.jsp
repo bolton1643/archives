@@ -9,15 +9,14 @@
 <link href="css/ligerui-all.css" rel="stylesheet" type="text/css"/>
 <title>用户管理</title>
  <script type="text/javascript">
- var UserData = "{ Rows: [" +  <s:iterator id="cl" value="cl" status="st"></s:iterator>
-   +"}], Total: " +" }";
+ var UserData = {Rows:[<s:iterator id="cl" value="cl" status="st">{"userid":<s:property value="userId"/>,"userName":"<s:property value="userName"/>","loginName":"<s:property value="loginName"/>","edit":"<a href=\"GetUserById.action?user.userId=<s:property value="userId"/>\">编辑</a>","priority":"<a href=\"UserRight.action?user.userId=<s:property value="userId"/>\">权限</a>"}<s:if test="#st.last"></s:if><s:else>,</s:else></s:iterator>],Total:2};
  $(document).ready(function(){
       $("#maingrid").ligerGrid({
          columns:[{ display: '主键',      name: 'userid', width: 100, type: 'int' },
-                  { display: '用户姓名',  name: 'userName', width: 200, type: 'int' },
-                  { display: '登陆名',  name: 'loginName', width: 100, type: 'int' },
-                  { display: '编辑',  name: 'edit', width: 100, type: 'int' },
-                  { display: '权限',  name: 'priority', width: 100, type: 'int' }
+                  { display: '用户姓名',  name: 'userName', width: 200, type: 'text' },
+                  { display: '登陆名',  name: 'loginName', width: 100, type: 'text' },
+                  { display: '编辑',  name: 'edit', width: 100, type: 'text' },
+                  { display: '权限',  name: 'priority', width: 100, type: 'text' }
          ],//end
          usePager: false, 
          isScroll: true,
@@ -30,28 +29,6 @@
     <a  class="l-button" style="width:120px;float:left; margin-left:10px;" href="admin/registe.jsp">注册用户</a>
     <div class="l-clear"></div>
     <div id="maingrid" style="margin-top:20px">
-    <table>
-        <thead>
-        <tr>
-            <th align="left">编号</th>
-            <th align="left">用户姓名</th>
-            <th align="left">登录名</th>
-            <th align="left">编辑</th>
-            <th align="left">权限</th>
-        </tr>
-        </thead>
-        <tbody>
-        <s:iterator id="cl" value="cl" status="st">
-           <tr align="left" >
-             <td><s:property value="userId"/></td>
-             <td><s:property value="userName"/></td>
-             <td><s:property value="loginName"/></td>
-             <td><a href="GetUserById.action?user.userId=<s:property value="userId"/>" >编辑</a></td>
-             <td><a href="UserRight.action?user.userId=<s:property value="userId"/>" >权限</a></td>
-           </tr>
-        </s:iterator>
-        </tbody>
-    </table>
     </div>
 </body>
 </html>

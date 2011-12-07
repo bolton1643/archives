@@ -57,6 +57,7 @@ body{font-family: "微软雅黑", "宋体", Arial, sans-serif; font-size: 12px; 
     background: #E0EDFF url(../images/controls/button-bg.gif) repeat-x center;
      text-align:center;color: #2C4D79;  text-decoration:none; cursor:pointer;
 }
+
 .l-button-over,.l-button:hover
 {background: #FFBE76 url(../images/controls/button-bg-over.gif) repeat-x center; border-color:#D6A886;
 }
