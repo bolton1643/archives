@@ -64,9 +64,8 @@ public interface UserDao {
 	 */
 	User findByNameAndPass(String name, String pass);
 	
-	List userRight(int userId);
 	
-	List findUserRight(int userId);
+	List<TreeNodeRight> findUserRight(int userId);
 	
 	public void saveRight(List <TreeNodeRight> tl,int userId);
 }

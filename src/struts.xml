@@ -4,309 +4,309 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
-	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.objectFactory" value="spring" />
 
 
-	<package name="rf" extends="json-default,jasperreports-default">
-		<interceptors>
-			<!-- 登录控制的拦截器 -->
-			<interceptor name="authority"
-				class="com.sw.interceptor.AuthorityInterceptor" />
-			<interceptor-stack name="rfStack">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="authority"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
-		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+    <package name="rf" extends="json-default,jasperreports-default">
+        <interceptors>
+            <!-- 登录控制的拦截器 -->
+            <interceptor name="authority"
+                class="com.sw.interceptor.AuthorityInterceptor" />
+            <interceptor-stack name="rfStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="authority"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="defaultStack"></default-interceptor-ref>
 
-		<global-results>
-			<!-- 下面定义的结果对所有的Action都有效 -->
-			<result name="exception">page/error.jsp</result>
-			<result name="success">page/success.jsp</result>
-			<result name="login">page/login.jsp</result>
-		</global-results>
+        <global-results>
+            <!-- 下面定义的结果对所有的Action都有效 -->
+            <result name="exception">page/error.jsp</result>
+            <result name="success">page/success.jsp</result>
+            <result name="login">page/login.jsp</result>
+        </global-results>
 
-		<global-exception-mappings>
-			<!-- 指Action抛出Exception异常时，转入名为exception的结果。 -->
-			<exception-mapping exception="java.lang.Exception"
-				result="exception" />
-		</global-exception-mappings>
-		<action name="login" class="com.sw.action.UserAction" method="login">
-		    <result type="json">
-		    	    <param name="includeProperties">message</param>
-		    </result>
-			  <interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-	
-		<action name="user" class="com.sw.action.UserAction" method="userList">
-		    <result name="success">admin/userlist.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
+        <global-exception-mappings>
+            <!-- 指Action抛出Exception异常时，转入名为exception的结果。 -->
+            <exception-mapping exception="java.lang.Exception"
+                result="exception" />
+        </global-exception-mappings>
+        <action name="login" class="com.sw.action.UserAction" method="login">
+            <result type="json">
+                    <param name="includeProperties">message</param>
+            </result>
+              <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+    
+        <action name="user" class="com.sw.action.UserAction" method="userList">
+            <result name="success">admin/userlist.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
 
-		<action name="AddUser" class="com.sw.action.UserAction" method="addUser">
-		    <result name="success" type="redirectAction">
-				<param name="actionName">user</param>
-			</result>
-			<result name="failure">error.jsp</result>
-		</action>
-		
-		<action name="GetUserById" class="com.sw.action.UserAction" method="getUserById">
-			<result name="success">admin/modifyuser.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>
+        <action name="AddUser" class="com.sw.action.UserAction" method="addUser">
+            <result name="success" type="redirectAction">
+                <param name="actionName">user</param>
+            </result>
+            <result name="failure">error.jsp</result>
+        </action>
+        
+        <action name="GetUserById" class="com.sw.action.UserAction" method="getUserById">
+            <result name="success">admin/modifyuser.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>
 
-		<action name="ModifyUser"
-			class="com.sw.action.UserAction"  method="modifyUser">			
-		    <result name="success" type="redirectAction">
-				<param name="actionName">user</param>
-			</result>
-			<result name="failure">error.jsp</result>
-		</action>
-		
-		<action name="UserRight"
-			class="com.sw.action.UserAction"  method="userRight">			
-		    <result name="success">admin/userright.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>		
+        <action name="ModifyUser"
+            class="com.sw.action.UserAction"  method="modifyUser">            
+            <result name="success" type="redirectAction">
+                <param name="actionName">user</param>
+            </result>
+            <result name="failure">error.jsp</result>
+        </action>
+        
+        <action name="UserRight"
+            class="com.sw.action.UserAction"  method="userRight">            
+            <result name="success">admin/userright.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>        
 
-		<action name="SaveRight"
-			class="com.sw.action.UserAction"  method="saveRight">			
-		    <result name="success" type="redirectAction">
-				<param name="actionName">UserRight?user.userId=${user.userId}</param>
-			</result>
-			<result name="failure">error.jsp</result>
-		</action>	
-					
-		<action name="UserRightJson" class="com.sw.action.UserAction" method="rightList">
-		    <result type="json"/>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-							
-		<!-- 树状菜单 -->
-		<action name="tree" class="com.sw.action.TreeAction" method="treeList">
-		    <result type="json"/>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="trGet" class="com.sw.action.TreeAction" method="treeGet">
-		    <result name="success">admin/trget.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="trAddMenu" class="com.sw.action.TreeAction" method="treeAddMenu">
-		    <result name="success" type="redirect">admin/home.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>				
-		<action name="trAdd" class="com.sw.action.TreeAction" method="treeAdd">
-		    <result name="success">admin/home.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="trDel" class="com.sw.action.TreeAction" method="treeDel">
-		    <result type="json"/>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>	
-		<action name="trEdit" class="com.sw.action.TreeAction" method="treeEdit">
-		    <result name="editmenu">admin/treditmenu.jsp</result>
-		    <result name="edittemplate">admin/tredittemplate.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="trDoEditMenu" class="com.sw.action.TreeAction" method="treeDoEditMenu">
-		    <result name="success" type="redirect">admin/home.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>	
-		<action name="trDoEditTemplate" class="com.sw.action.TreeAction" method="treeDoEditTemplate">
-		    <result name="success" type="redirect">admin/home.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		
-		<!-- 上传，下载 -->
-		<action name="dupload" class="com.sw.action.UploadAction">
-			<result name="success">/page/d_uploadResult.jsp</result>
-			<result name="input">/page/upload.jsp</result>
-			<!-- 
-			<interceptor-ref name="fileUpload">
-				<param name="maximumSize">409600</param>
-				<param name="allowedTypes">
-					image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg
-				</param>
-			</interceptor-ref>			
-			 -->
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		
-		<action name="upload" class="com.sw.action.UploadAction">
-			<result name="success">/page/uploadResult.jsp</result>
-			<result name="input">/page/upload.jsp</result>
-			<!-- 
-			<interceptor-ref name="fileUpload">
-				<param name="maximumSize">409600</param>
-				<param name="allowedTypes">
-					image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg
-				</param>
-			</interceptor-ref>			
-			 -->
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="download"
-			class="com.ltxc.action.DownloadAction">
-			<result name="success" type="stream">
-				<param name="contentType">
-					application/vnd.ms-powerpoint
-				</param>
-				<param name="contentDisposition">
-					filename="struts2.ppt"
-				</param>
-				<param name="inputName">DownloadFile</param>
-			</result>
-		</action>	
-		
-		
-		<!-- 文档管理 -->
-		<action name="fmList" class="com.sw.action.FileManageAction" method="list">
-			<result name="success">page/filemanage.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>
-		<action name="fmAdd" class="com.sw.action.FileManageAction" method="add">
-			<result name="success">page/fileadd.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="fmDoAdd" class="com.sw.action.FileManageAction" method="doAdd">
-			<result name="input">page/fileadd.jsp</result>
-		    <result name="success" type="redirectAction">
-				<param name="actionName">fmList</param>
-			</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>				
-		<action name="fmDel"
-			class="com.sw.action.FileManageAction" method="delete">
-		    <result type="json"/>
-			<interceptor-ref name="rfStack"></interceptor-ref>
-		</action>
-		<action name="fmModify"
-			class="com.sw.action.FileManageAction" method="modify">
-			<result name="success" type="redirectAction">
-				<param name="actionName">fmList</param>
-			</result>
-			<result name="failure">error.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="fmGet"
-			class="com.sw.action.FileManageAction" method="getbyid">
-			<result name="success">page/filemodify.jsp</result>
-			<result name="failure">error.jsp</result>
-			<interceptor-ref name="rfStack"></interceptor-ref>
-		</action>
-		<action name="fView"
-			class="com.sw.action.FileManageAction" method="view">
-			<result name="success">page/file.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>		
-		<action name="fList"
-			class="com.sw.action.FileManageAction" method="listview">
-			<result name="success">page/filelist.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>
-		
-		<!-- 报表 -->
-		<action name="px">
-			<result>/images/px.gif</result>
-		</action>
-		<action name="PDF" class="com.sw.ir.JasperAction">
-			<result name="success" type="jasper">
-				<param name="location">
-					/jasper/rt7.jasper
-				</param>
-				<param name="dataSource">myList</param>
-				<param name="format">PDF</param>
-			</result>
-		</action>
-		<action name="HTML" class="com.sw.ir.JasperAction">
-			<result name="success" type="jasper">
-				<param name="location">
-					/jasper/compiled_jasper_template.jasper
-				</param>
-				<param name="dataSource">myList</param>
-				<param name="format">HTML</param>
-			</result>
-		</action>
-		<action name="XML" class="com.sw.ir.JasperAction">
-			<result name="success" type="jasper">
-				<param name="location">
-					/jasper/compiled_jasper_template.jasper
-				</param>
-				<param name="dataSource">myList</param>
-				<param name="format">XML</param>
-			</result>
-		</action>
-		<action name="CSV" class="com.sw.ir.JasperAction">
-			<result name="success" type="jasper">
-				<param name="location">
-					/jasper/compiled_jasper_template.jasper
-				</param>
-				<param name="dataSource">myList</param>
-				<param name="format">CSV</param>
-			</result>
-		</action>
-		<action name="XLS" class="com.sw.ir.JasperAction">
-			<result name="success" type="jasper">
-				<param name="location">
-					/jasper/compiled_jasper_template.jasper
-				</param>
-				<param name="dataSource">myList</param>
-				<param name="format">XLS</param>
-			</result>
-		</action>
-		
-		<!-- 数据管理 -->
-		<action name="dList" class="com.sw.action.DataAction" method="list">
-			<result name="success">page/dmanage.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>		
-		<action name="dList2" class="com.sw.action.DataAction" method="list">
-		    <result type="json"/>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>	
-		<action name="test" class="com.sw.action.DataAction" method="test">
-			<result name="success">page/dmanage.jsp</result>
-			<result name="failure">error.jsp</result>
-		</action>			
-		<action name="dAdd" class="com.sw.action.DataAction" method="dAdd">
-			<result name="success">page/dadd.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>	
-		<action name="dDoAdd" class="com.sw.action.DataAction" method="dDoAdd">
-			<result name="input">page/dadd.jsp</result>
-			<result name="dsuccess">page/dsuccess.html</result>
-		    <result name="success" type="redirectAction">
-				<param name="actionName">dList?tid=${tid}</param>
-			</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>					
-		<action name="dDel" class="com.sw.action.DataAction" method="dDel">
-		    <result type="json"/>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>	
-		<action name="dEdit" class="com.sw.action.DataAction" method="dEdit">
-		    <result name="success">page/dmodify.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		<action name="dDoEdit" class="com.sw.action.DataAction" method="dDoEdit">
-			<result name="dsuccess">page/dsuccess.html</result>
-			<result name="success" type="redirectAction">
-				<param name="actionName">dList?tid=${tid}</param>
-			</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>	
-		
-		<!-- 报表 -->
-		<action name="px">
-			<result>/images/px.gif</result>
-		</action>
-		<action name="PDF2" class="com.sw.action.DataAction" method="PDF">
-		    <result name="pdf">page/pdf.jsp</result>
-		</action>	
-		
-		<action name="XLS2" class="com.sw.action.DataAction" method="XLS">
-		    <result name="xls">page/pdf.jsp</result>
-		</action>															
-	</package>
+        <action name="SaveRight"
+            class="com.sw.action.UserAction"  method="saveRight">            
+            <result name="success" type="redirectAction">
+                <param name="actionName">UserRight?user.userId=${user.userId}</param>
+            </result>
+            <result name="failure">error.jsp</result>
+        </action>    
+                    
+        <action name="UserRightJson" class="com.sw.action.UserAction" method="rightList">
+            <result type="json"/>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+                            
+        <!-- 树状菜单 -->
+        <action name="tree" class="com.sw.action.TreeAction" method="treeList">
+            <result type="json"/>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="trGet" class="com.sw.action.TreeAction" method="treeGet">
+            <result name="success">admin/trget.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="trAddMenu" class="com.sw.action.TreeAction" method="treeAddMenu">
+            <result name="success" type="redirect">admin/home.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>                
+        <action name="trAdd" class="com.sw.action.TreeAction" method="treeAdd">
+            <result name="success">admin/home.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="trDel" class="com.sw.action.TreeAction" method="treeDel">
+            <result type="json"/>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>    
+        <action name="trEdit" class="com.sw.action.TreeAction" method="treeEdit">
+            <result name="editmenu">admin/treditmenu.jsp</result>
+            <result name="edittemplate">admin/tredittemplate.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="trDoEditMenu" class="com.sw.action.TreeAction" method="treeDoEditMenu">
+            <result name="success" type="redirect">admin/home.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>    
+        <action name="trDoEditTemplate" class="com.sw.action.TreeAction" method="treeDoEditTemplate">
+            <result name="success" type="redirect">admin/home.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <!-- 上传，下载 -->
+        <action name="dupload" class="com.sw.action.UploadAction">
+            <result name="success">/page/d_uploadResult.jsp</result>
+            <result name="input">/page/upload.jsp</result>
+            <!-- 
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">409600</param>
+                <param name="allowedTypes">
+                    image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg
+                </param>
+            </interceptor-ref>            
+             -->
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <action name="upload" class="com.sw.action.UploadAction">
+            <result name="success">/page/uploadResult.jsp</result>
+            <result name="input">/page/upload.jsp</result>
+            <!-- 
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">409600</param>
+                <param name="allowedTypes">
+                    image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg
+                </param>
+            </interceptor-ref>            
+             -->
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="download"
+            class="com.ltxc.action.DownloadAction">
+            <result name="success" type="stream">
+                <param name="contentType">
+                    application/vnd.ms-powerpoint
+                </param>
+                <param name="contentDisposition">
+                    filename="struts2.ppt"
+                </param>
+                <param name="inputName">DownloadFile</param>
+            </result>
+        </action>    
+        
+        
+        <!-- 文档管理 -->
+        <action name="fmList" class="com.sw.action.FileManageAction" method="list">
+            <result name="success">page/filemanage.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>
+        <action name="fmAdd" class="com.sw.action.FileManageAction" method="add">
+            <result name="success">page/fileadd.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="fmDoAdd" class="com.sw.action.FileManageAction" method="doAdd">
+            <result name="input">page/fileadd.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">fmList</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>                
+        <action name="fmDel"
+            class="com.sw.action.FileManageAction" method="delete">
+            <result type="json"/>
+            <interceptor-ref name="rfStack"></interceptor-ref>
+        </action>
+        <action name="fmModify"
+            class="com.sw.action.FileManageAction" method="modify">
+            <result name="success" type="redirectAction">
+                <param name="actionName">fmList</param>
+            </result>
+            <result name="failure">error.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="fmGet"
+            class="com.sw.action.FileManageAction" method="getbyid">
+            <result name="success">page/filemodify.jsp</result>
+            <result name="failure">error.jsp</result>
+            <interceptor-ref name="rfStack"></interceptor-ref>
+        </action>
+        <action name="fView"
+            class="com.sw.action.FileManageAction" method="view">
+            <result name="success">page/file.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>        
+        <action name="fList"
+            class="com.sw.action.FileManageAction" method="listview">
+            <result name="success">page/filelist.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>
+        
+        <!-- 报表 -->
+        <action name="px">
+            <result>/images/px.gif</result>
+        </action>
+        <action name="PDF" class="com.sw.ir.JasperAction">
+            <result name="success" type="jasper">
+                <param name="location">
+                    /jasper/rt7.jasper
+                </param>
+                <param name="dataSource">myList</param>
+                <param name="format">PDF</param>
+            </result>
+        </action>
+        <action name="HTML" class="com.sw.ir.JasperAction">
+            <result name="success" type="jasper">
+                <param name="location">
+                    /jasper/compiled_jasper_template.jasper
+                </param>
+                <param name="dataSource">myList</param>
+                <param name="format">HTML</param>
+            </result>
+        </action>
+        <action name="XML" class="com.sw.ir.JasperAction">
+            <result name="success" type="jasper">
+                <param name="location">
+                    /jasper/compiled_jasper_template.jasper
+                </param>
+                <param name="dataSource">myList</param>
+                <param name="format">XML</param>
+            </result>
+        </action>
+        <action name="CSV" class="com.sw.ir.JasperAction">
+            <result name="success" type="jasper">
+                <param name="location">
+                    /jasper/compiled_jasper_template.jasper
+                </param>
+                <param name="dataSource">myList</param>
+                <param name="format">CSV</param>
+            </result>
+        </action>
+        <action name="XLS" class="com.sw.ir.JasperAction">
+            <result name="success" type="jasper">
+                <param name="location">
+                    /jasper/compiled_jasper_template.jasper
+                </param>
+                <param name="dataSource">myList</param>
+                <param name="format">XLS</param>
+            </result>
+        </action>
+        
+        <!-- 数据管理 -->
+        <action name="dList" class="com.sw.action.DataAction" method="list">
+            <result name="success">page/dmanage.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>        
+        <action name="dList2" class="com.sw.action.DataAction" method="list">
+            <result type="json"/>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>    
+        <action name="test" class="com.sw.action.DataAction" method="test">
+            <result name="success">page/dmanage.jsp</result>
+            <result name="failure">error.jsp</result>
+        </action>            
+        <action name="dAdd" class="com.sw.action.DataAction" method="dAdd">
+            <result name="success">page/dadd.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>    
+        <action name="dDoAdd" class="com.sw.action.DataAction" method="dDoAdd">
+            <result name="input">page/dadd.jsp</result>
+            <result name="dsuccess">page/dsuccess.html</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">dList?tid=${tid}</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>                    
+        <action name="dDel" class="com.sw.action.DataAction" method="dDel">
+            <result type="json"/>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>    
+        <action name="dEdit" class="com.sw.action.DataAction" method="dEdit">
+            <result name="success">page/dmodify.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="dDoEdit" class="com.sw.action.DataAction" method="dDoEdit">
+            <result name="dsuccess">page/dsuccess.html</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">dList?tid=${tid}</param>
+            </result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>    
+        
+        <!-- 报表 -->
+        <action name="px">
+            <result>/images/px.gif</result>
+        </action>
+        <action name="PDF2" class="com.sw.action.DataAction" method="PDF">
+            <result name="pdf">page/pdf.jsp</result>
+        </action>    
+        
+        <action name="XLS2" class="com.sw.action.DataAction" method="XLS">
+            <result name="xls">page/pdf.jsp</result>
+        </action>                                                            
+    </package>
 </struts>
