@@ -20,7 +20,7 @@
             $("#framecenter").ligerTab({ height: height });
                                 //树
             $("#tree1").ligerTree({
-                url: 'tree.action?root=source',
+                url: 'tree.action?root=0',
                 idFieldName :'id',
                 parentIDFieldName :'pid',
                 onBeforeExpand: onBeforeExpand,

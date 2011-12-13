@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t12" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t12" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -49,82 +49,82 @@
 			<staticText>
 				<reportElement x="60" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VJJRVL3TWIJRVL4KY5FRB]]></text>
+				<text><![CDATA[目录号(代号)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="90" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOBOA10XF]]></text>
+				<text><![CDATA[分类号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="120" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VIWNVOCD]]></text>
+				<text><![CDATA[年度]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="150" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[V44TVNDT1Z3IDL]]></text>
+				<text><![CDATA[保管期限]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="180" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWO1O5CXQF]]></text>
+				<text><![CDATA[案卷号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="210" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[V15QFOGX34FOBL]]></text>
+				<text><![CDATA[案卷题名]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="240" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOFPIPWLG]]></text>
+				<text><![CDATA[顺序号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="270" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOB4Y052FR3M]]></text>
+				<text><![CDATA[文件编号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="300" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[V5OV3MED4UG]]></text>
+				<text><![CDATA[责任者]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="330" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VCHTV4Y052FR3M]]></text>
+				<text><![CDATA[文件标题]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="360" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VEHPDLFHZTVTBN5TXEWTB]]></text>
+				<text><![CDATA[文件形成时间]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="390" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOTSZK0IJRLN]]></text>
+				<text><![CDATA[张(页)号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="420" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[V0WRLNEHXWG2NM5TXEWTB]]></text>
+				<text><![CDATA[文件起止日期]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="450" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[V3XSHLJD]]></text>
+				<text><![CDATA[页数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="480" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[V4HP1L2C]]></text>
+				<text><![CDATA[附件]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="510" y="0" width="30" height="20"/>
 				<textElement/>
-				<text><![CDATA[VC3VR1YC]]></text>
+				<text><![CDATA[备注]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

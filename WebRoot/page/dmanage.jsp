@@ -3,12 +3,11 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
 <html>
   <head>
     <base href="http://<%=request.getHeader("host")%><%=request.getContextPath()%>/" />
     <link href="css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <link href="css/bruce.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-last.js" type="text/javascript"></script>
     <script src="js/ligerui.all.js" type="text/javascript"></script>
     <script src="js/common.js" type="text/javascript"></script>  
@@ -35,53 +34,53 @@
            }//end of else    
         } //end of func
         
-   var gridManager = null;    
+        var gridManager = null;
         function queryData()
         {//begin
-     if (!gridManager) return;
-     
-          var qColumnVals = [];
-          var control = document.getElementsByName("qColumn")
-     for(var i=0;i<control.length;i++){
-       qColumnVals.push(control[i].value);
-     }//end of for
+            if (!gridManager) return;
+            var qColumnVals = [];
+            var control = document.getElementsByName("qColumn")
+            for(var i=0;i<control.length;i++){
+               qColumnVals.push(control[i].value);
+            }//end of for
                 
-     var qCondVals = [];
-     var control2 = document.getElementsByName("qCond")
-     for(var i=0;i<control2.length;i++){
-       qCondVals.push(control2[i].value);
-     }//end of for
+            var qCondVals = [];
+            var control2 = document.getElementsByName("qCond")
+            for(var i=0;i<control2.length;i++){
+                qCondVals.push(control2[i].value);
+             }//end of for
                 
-     var qValueVals = [];
-     var control3 = document.getElementsByName("qValue")
-     for(var i=0;i<control3.length;i++){
-       qValueVals.push(control3[i].value);
-     }//end of for                                
+             var qValueVals = [];
+             var control3 = document.getElementsByName("qValue")
+             for(var i=0;i<control3.length;i++){
+                 qValueVals.push(control3[i].value);
+             }//end of for                                
                 
-     gridManager.setOptions(
-       { parms: [{ name: 'qColumn', value: qColumnVals},
-                 {name: 'qValue', value: qValueVals} ,
-                 {name: 'qCond', value: qCondVals} 
-                    ] }
-                );
-     gridManager.loadData(true);            
+             gridManager.setOptions(
+                 { parms: [{ name: 'qColumn', value: qColumnVals},
+                           {name: 'qValue', value: qValueVals} ,
+                           {name: 'qCond', value: qCondVals} 
+                           ] }//end ofparams
+             );//end setOptions
+             gridManager.loadData(true);
         }//end of func
         
         function rm(theRow){
             var tb = document.getElementById("insertPosition");
             tb.removeChild(theRow);
-        }
+        }//endof rm
                 
-        $(document).ready(function(){
-            $("#qRow").click(function(){
-                var insertPos = $("#insertPosition");
-                var trNode = $("<div><img src='images/minus.gif' onclick='rm(this.parentNode);'/>&nbsp;<select class='qColumn' name='qColumn' style='width:100px;'><s:iterator value='cList' status='st'><option value=<s:property value='dName' />><s:property value='dNotes' /></option></s:iterator></select>&nbsp;<select name='qCond'  class='qCond'><option value='包含'>包含</option><option value='等于'>等于</option><option value='大于等于'>大于等于</option><option value='小于等于'>小于等于</option></select>&nbsp;<input type='text' name='qValue' /></div>");
-                insertPos.append(trNode);
-                //alert(document.getElementById("insertPosition").innerHTML)
-            });
-        });    
+    $(document).ready(function(){
+        $("#qRow").click(function(){
+            var insertPos = $("#insertPosition");
+            var trNode = $("<div><img src='images/minus.gif' onclick='rm(this.parentNode);'/>&nbsp;<select class='qColumn' name='qColumn' style='width:100px;'><s:iterator value='cList' status='st'><option value=<s:property value='dName' />><s:property value='dNotes' /></option></s:iterator></select>&nbsp;<select name='qCond'  class='qCond'><option value='包含'>包含</option><option value='等于'>等于</option><option value='大于等于'>大于等于</option><option value='小于等于'>小于等于</option></select>&nbsp;<input type='text' name='qValue' /></div>");
+            insertPos.append(trNode);
+            //alert(document.getElementById("insertPosition").innerHTML)
+        });//endof 
+        $("#form1").ligerForm();
+    });//end of ready
     
-      var activeDialog = null;
+    var activeDialog = null;
         
     function f_openWindow(url, title, width, height)
     {//begin of func
@@ -102,12 +101,13 @@
     {//begin
                 //工具条
       $("#toptoolbar").ligerToolBar({ items: [
-                    <s:if test="radd==1">   { text: '增加', id:'add', click: itemclick },   </s:if>                
-                    <s:if test="rmodify==1">{ text: '修改', id:'modify', click: itemclick },</s:if>   
-                    <s:if test="rdelete==1">{ text: '删除', id:'delete', click: itemclick },</s:if>       
-                    <s:if test="rdownload==11">    { text: '下载', id:'download', click: itemclick },    </s:if> 
-                    <s:if test="rprint==1">             { text: '打印', id:'print', click: itemclick },         </s:if>                                 
-          { text: 'Excel', id:'excel', click: itemclick },     { text: '查询', id:'query', click: itemclick }
+                    <s:if test="radd==1">       { text: '增加', id:'add', click: itemclick },          </s:if>
+                    <s:if test="rmodify==1">    { text: '修改', id:'modify', click: itemclick },       </s:if>
+                    <s:if test="rdelete==1">    { text: '删除', id:'delete', click: itemclick },       </s:if>
+                    <s:if test="rdownload==11"> { text: '下载', id:'download', click: itemclick },     </s:if> 
+                    <s:if test="rprint==1">     { text: '打印', id:'print', click: itemclick },</s:if>                                 
+                                                { text: 'Excel', id:'excel', click: itemclick },     
+                                                { text: '查询', id:'query', click: itemclick }
      ]});//end toptoolbar
 
             //表格
@@ -115,15 +115,13 @@
         columns: [
                     <s:iterator value="cList" status="st">
                       { display: '<s:property value="dNotes" />', name: '<s:property value="dName" />', align: 'left', width: 100, minWidth: 40}
-                      <s:if test="#st.last==false">
-                        ,
-                      </s:if>
-              </s:iterator>], 
+                    <s:if test="#st.last==false"> ,</s:if>
+                    </s:iterator>], 
               dataAction: 'server', 
               url: 'dList2.action?data=1&tid=<s:property value="tid" />', 
               sortName: 'CustomerID',
-         width: '100%', height: '100%', pageSize: 30,
-         checkbox : true,
+              width: '100%', height: '100%', pageSize: 30,
+              checkbox : true,
                        //应用灰色表头
          cssClass: 'l-grid-gray', 
          onAfterShowData: function (grid)
@@ -170,40 +168,40 @@
             str += this.ID;
           });//end of each
                         
-                         var url = 'dEdit.action?tid=<s:property value="tid"/>&id='+str;
-                         f_openWindow(url, '修改数据', 600, 350);
-                       return;
-                   case "delete":
-                   var data = gridManager.getCheckedRows();
-                    if (data.length == 0)
-                      alert('请选择行');
-                    else
-                    {//begin of else
-                      var checkedIds = [];
-                      $(data).each(function ()
-                      {//begin of func
-                        checkedIds.push(this.ID);
-                      });//end of cunc
-                      $.ligerDialog.confirm('确定删除' + checkedIds.join(',') + '?', function ()
-                  {//begin of func
-                      var postUrl = "dDel.action";
-                      var d = "id="+checkedIds.join(',')+"&tid=<s:property value="tid"/>";
-                      $.ajax({
-                                    type: "post",
-                                    url:postUrl,
-                                    dataType:"html",
-                                    data:d,
-                                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                                        alert('网络错误');
-                                    },//end of 
-                                    success:function(data,textStatus)
-                                            {//begin 
-                                                if(data == 'success')
-                                                {//begin
-                                           f_reload();
-                                                }//end of if
-                                            }//end of succ
-                              });  //endof aj
+          var url = 'dEdit.action?tid=<s:property value="tid"/>&id='+str;
+          f_openWindow(url, '修改数据', 600, 350);
+          return;
+        case "delete":
+          var data = gridManager.getCheckedRows();
+          if (data.length == 0)
+            alert('请选择行');
+          else
+          {//begin of else
+            var checkedIds = [];
+            $(data).each(function ()
+            {//begin of func
+              checkedIds.push(this.ID);
+            });//end of cunc
+            $.ligerDialog.confirm('确定删除' + checkedIds.join(',') + '?', function ()
+            {//begin of func
+                var postUrl = "dDel.action";
+                var d = "id="+checkedIds.join(',')+"&tid=<s:property value="tid"/>";
+                $.ajax({
+                              type: "post",
+                              url:postUrl,
+                              dataType:"html",
+                              data:d,
+                              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                  alert('网络错误');
+                              },//end of 
+                              success:function(data,textStatus)
+                                      {//begin 
+                                          if(data == 'success')
+                                          {//begin
+                                     f_reload();
+                                          }//end of if
+                                      }//end of succ
+                        });  //endof aj
                }); //end of confirm
              }//end of else 
              return;
@@ -217,19 +215,19 @@
                      else
                               obj.style.display='none';
               return;
-            case "print":
-            {//begin of
-                                var obj = document.getElementById("printCondition");
-                         if(obj.style.display=='none')
-                                  obj.style.display="";
-                         else
-                                  obj.style.display='none';
-                  return;                        
-                            }//end of print
-                            case "excel":
-                                 window.open("XLS2.action?rid=<s:property value="tid"/>",'导出Excel',"fullscreen=0");
-               return;                    
-             }//end of switch 
+              case "print":
+              {//begin of
+                 var obj = document.getElementById("printCondition");
+                 if(obj.style.display=='none')
+                      obj.style.display="";
+                 else
+                      obj.style.display='none';
+                  return;
+               }//end of print
+               case "excel":
+                 window.open("XLS2.action?rid=<s:property value="tid"/>",'导出Excel',"fullscreen=0");
+               return;
+            }//end of switch 
           }//end of if(item)
         }//end of func
     </script>
@@ -256,7 +254,7 @@
           <input type="radio" value="7" name="reportname" />卷内备考表
     </s:if>      
 
-      <input type="button" id="printbtn" value=" 打印 " onClick="printData();"/>
+      <input type="button" class="bruce-button" id="printbtn" value=" 打印 " onClick="printData();"/>
   </div>
 <div class="l-panel-search" id="queryCondition" style="display:none;">
     <div>
@@ -273,21 +271,13 @@
                 <option value="小于等于">小于等于</option>
             </select>
             <input type="text" name="qValue" />
-            <input type="button" id="searchbtn" value=" 查询 " onClick="queryData();"/>
+            <input type="button" class="bruce-button" id="searchbtn" value=" 查询 " onClick="queryData();"/>
             <br />
     </div>
-            <div id="insertPosition"></div>
-
+    <div id="insertPosition"></div>
 </div>
-
-    <div id="maingrid" style="margin:0; padding:0"></div>
-
-  </form>
-
-
-  <div style="display:none;">
-  
-</div>
- 
+<div id="maingrid" style="margin:0; padding:0"></div>
+</form>
+  <div style="display:none;"></div>
 </body>
 </html>

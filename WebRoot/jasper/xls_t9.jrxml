@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t9" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t9" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -45,62 +45,62 @@
 			<staticText>
 				<reportElement x="78" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOV3LPVIG]]></text>
+				<text><![CDATA[全宗号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="117" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOBOA10XF]]></text>
+				<text><![CDATA[分类号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="156" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[VIWNVOCD]]></text>
+				<text><![CDATA[年度]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="195" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWO1O5CXQF]]></text>
+				<text><![CDATA[顺序号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="234" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V15QFOGX5VG]]></text>
+				<text><![CDATA[正题名]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="273" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V5OV3MED4UG]]></text>
+				<text><![CDATA[责任者]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="312" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V44TVNDT1Z3IDL]]></text>
+				<text><![CDATA[保管期限]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="351" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V3XS131052FR3MNTYNXPB]]></text>
+				<text><![CDATA[卷内文件份数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="390" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V3XSHLJ152FR3MNTYNXPB]]></text>
+				<text><![CDATA[卷内文件页数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="429" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V34NFMKTXKG2NM5TXEWTB]]></text>
+				<text><![CDATA[文件起始月份]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="468" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[V34NFMKD5KOY1L5TXEWTB]]></text>
+				<text><![CDATA[文件结束月份]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="507" y="0" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[VC3VR1YC]]></text>
+				<text><![CDATA[备注]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

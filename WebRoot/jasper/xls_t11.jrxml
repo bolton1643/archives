@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t11" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t11" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -49,87 +49,87 @@
 			<staticText>
 				<reportElement x="58" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOV3LPVIG]]></text>
+				<text><![CDATA[全宗号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="87" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOBOA10XF]]></text>
+				<text><![CDATA[分类号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="116" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VIWNVOCD]]></text>
+				<text><![CDATA[年度]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="145" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[V44TVNDT1Z3IDL]]></text>
+				<text><![CDATA[保管期限]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="174" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWO1O5CXQF]]></text>
+				<text><![CDATA[案卷号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="203" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOFPIPWLG]]></text>
+				<text><![CDATA[顺序号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="232" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOB4Y052FR3M]]></text>
+				<text><![CDATA[文件编号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="261" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[V15QFOGX34FOBL]]></text>
+				<text><![CDATA[案卷编号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="290" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[V5OV3MED4UG]]></text>
+				<text><![CDATA[责任者]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="319" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VCHTV4Y052FR3M]]></text>
+				<text><![CDATA[文件标题]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="348" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOT0ROWSGKH0CX0]]></text>
+				<text><![CDATA[张（页）号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="377" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[V3XSHLJD]]></text>
+				<text><![CDATA[页数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="406" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VEHPDLFHXWG2NM5TXEWTB]]></text>
+				<text><![CDATA[文件起止时间]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="435" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VEHPDLFHZTVTBN5TXEWTB]]></text>
+				<text><![CDATA[文件形成时间]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="464" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[V4HP1L2C]]></text>
+				<text><![CDATA[附件]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="493" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[VC3VR1YC]]></text>
+				<text><![CDATA[备注]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="522" y="0" width="29" height="20"/>
 				<textElement/>
-				<text><![CDATA[V1VTL00W34VIDM]]></text>
+				<text><![CDATA[立卷单位]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

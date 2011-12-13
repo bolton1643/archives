@@ -149,20 +149,20 @@
              -->
             <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
-        <action name="download" class="com.ltxc.action.DownloadAction">
-            <param name="inputPath">/home/sw/test/</param>
+        <action name="download" class="com.sw.action.DownloadAction">
+            <param name="inputPath">/root/upload/</param>  
             <param name="fileName">${fileName}</param>
-            <result name="success" type="stream">
+            <result name="success" type="stream">  
                 <param name="contentType">
-                    application/octet-stream;charset=UTF8
+                    application/octet-stream;charset=UTF8  
                 </param>
-                <param name="inputName">inputStream</param>
-                <param name="contentDisposition">
-                    attachment;filename="${downloadFileName}"
-                </param>
-                <param name="bufferSize">4096</param>
-            </result>
-        </action>    
+                <param name="inputName">inputStream</param>  
+                <param name="contentDisposition">  
+                    attachment;filename="${downloadFileName}"  
+                </param>  
+                <param name="bufferSize">4096</param>  
+            </result>  
+          </action>
         
         <!-- ÎÄµµ¹ÜÀí -->
         <action name="fmList" class="com.sw.action.FileManageAction" method="list">

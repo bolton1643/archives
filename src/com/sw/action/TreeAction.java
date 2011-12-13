@@ -106,9 +106,7 @@ public class TreeAction extends ActionSupport {
             int userid = u.getUserId();
             if(root == null) 
                 root  = "1";
-            if (root == null) {
-
-            } else if (root.equalsIgnoreCase("source")) {
+            if (root.equalsIgnoreCase("source")) {
                 list = treeManager.findChildren("1",userid);
             } else {
                 list = treeManager.findChildren(root,userid);

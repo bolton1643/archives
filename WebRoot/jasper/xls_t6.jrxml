@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t6" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="xls_t6" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="tid" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select * from $P!{tid} ]]>
+		<![CDATA[select * from $P!{tid}]]>
 	</queryString>
 	<field name="ID" class="java.lang.Integer"/>
 	<field name="ID2" class="java.lang.Integer"/>
@@ -44,72 +47,72 @@
 			<staticText>
 				<reportElement x="68" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOV3LPVIG]]></text>
+				<text><![CDATA[全宗号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="102" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOBOA10XF]]></text>
+				<text><![CDATA[分类号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="136" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VIWNVOCD]]></text>
+				<text><![CDATA[年度]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="170" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[V44TVNDT1Z3IDL]]></text>
+				<text><![CDATA[保管期限]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="204" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWO3P4C2RVUVM2CWVNNB]]></text>
+				<text><![CDATA[档案室编件号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="238" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOB4Y052FR3M]]></text>
+				<text><![CDATA[文件编号3M]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="272" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[V15QFOGX5VG]]></text>
+				<text><![CDATA[正题名]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="306" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[V5OV3MED4UG]]></text>
+				<text><![CDATA[责任者]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="340" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VEHPDLFHZTVTBN5TXEWTB]]></text>
+				<text><![CDATA[文件形成时间]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="374" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[V3XSHLJ152FR3M]]></text>
+				<text><![CDATA[文件页数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="408" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOBN3C]]></text>
+				<text><![CDATA[盒号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="442" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[V4HP1L2C]]></text>
+				<text><![CDATA[附件]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="476" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VWFPZ3BD]]></text>
+				<text><![CDATA[密级]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="510" y="0" width="34" height="20"/>
 				<textElement/>
-				<text><![CDATA[VC3VR1YC]]></text>
+				<text><![CDATA[备注]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

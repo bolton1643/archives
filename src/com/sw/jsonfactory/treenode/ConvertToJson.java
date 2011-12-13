@@ -45,15 +45,6 @@ public class ConvertToJson {
     }
 
     public static String ConverListToJson(List<TreeNodeRight> treeNodes) {
-        // JSONArray jsonArray = new JSONArray();
-        // JSONObject jsonObject = null;
-        // for (TreeNode treeNode : list) {
-        // jsonObject = new JSONObject(treeNode);
-        // jsonArray.put(jsonObject);
-        // }
-        // String json = jsonArray.toString();
-        // return json;
-
         StringBuilder jsonString = new StringBuilder();
         jsonString.append("[");
 
@@ -63,10 +54,10 @@ public class ConvertToJson {
         for (TreeNodeRight treeNode : treeNodes) {
             if (i > 0) {
                 jsonString.append(",");
-            }
+            }//endof i>0
             jsonString.append(toJSONString2(treeNode));
             i++;
-        }
+        }//endoffor
 
         jsonString.append("]");
         return jsonString.toString();
@@ -131,15 +122,9 @@ public class ConvertToJson {
     }
 
     public static String toJSONString2(TreeNodeRight tn) {
-        StringBuilder opSb = new StringBuilder();
-
         StringBuilder sb = new StringBuilder();
         sb.append(" {");
         sb.append("  \"text\":\"" + tn.getText() + "\"");
-
-        // String url2 = "<a class='l-link'
-        // href='javascript:f_addTab(listpage,列表页面,trGet.action?id=3)'>列表页面</a>";
-        // sb.append(" \"text\":\"" + url2 + "\"");
 
         String url = "dList.action?tid=t" + tn.getId() + "&radd="
                 + tn.getRadd() + "&rdelete=" + tn.getRdelete() + "&rmodify="

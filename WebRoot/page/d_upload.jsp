@@ -10,50 +10,46 @@
 
 <script type="text/javascript">
 
-	function addMore()
-	{
-		var td = document.getElementById("more");
-		
-		var br = document.createElement("br");
-		
-		var input = document.createElement("input");
-		
-		var button = document.createElement("input");
-		
-		input.type="file";
-		input.name="file";
-		
-		button.type="button";
-		button.value="remove";
-		
-		button.onclick=function()
-		{
-			td.removeChild(br);
-			td.removeChild(input);
-			td.removeChild(button);
-		}
-		
-		
-		td.appendChild(br);
-		td.appendChild(input);
-		td.appendChild(button);
-		
-	}
-
+    function addMore()
+    {//end
+        var td = document.getElementById("more");
+        var br = document.createElement("br");
+        var input = document.createElement("input");
+        var button = document.createElement("input");
+        input.type="file";
+        input.name="file";
+        button.type="button";
+        button.value="remove";
+        
+        button.onclick=function()
+        {//end
+            td.removeChild(br);
+            td.removeChild(input);
+            td.removeChild(button);
+        }//end
+        
+        td.appendChild(br);
+        td.appendChild(input);
+        td.appendChild(button);
+        
+    }//endof
+    
+    $(document).ready(function(){
+        $("#fileUploadForm").ligerForm();
+    });//endoffunc
 </script>
-
 </head>
 <body>
 <%
-	String p = (String)request.getParameter("p");
-	String cid = (String)request.getParameter("cid");
+    String p = (String)request.getParameter("p");
+    String cid = (String)request.getParameter("cid");
 %>
 <div class="bruce_txt">
   <ul>
     <li>
        <s:fielderror  cssStyle="color=red"/>       
     </li>               
-	<s:form id="fileUploadForm" name="fileUploadForm" action="dupload.action" theme="simple" method="post" enctype="multipart/form-data">
+    <s:form id="fileUploadForm" name="fileUploadForm" action="dupload.action" theme="simple" method="post" enctype="multipart/form-data">
     <input type="hidden" id="p" name="p" value="<%=p %>">
     <input type="hidden" id="cid" name="cid" value="<%=cid %>">
     <li>
@@ -79,17 +75,17 @@
                   <div class="btn_r"></div>
             </div>
         </span>
-     </li>    	
+     </li>        
     </s:form>
 </ul>
 </div>
 
-	<div id="progressBar">
-	<div id="theMeter">
-    	<div id="progressBarText"></div>
-	        <div id="totalProgressBarBox">
-	        	<div id="totalProgressBarBoxContent"></div>
-	        </div>
+    <div id="progressBar">
+    <div id="theMeter">
+        <div id="progressBarText"></div>
+            <div id="totalProgressBarBox">
+                <div id="totalProgressBarBoxContent"></div>
+            </div>
         </div>
         <div id="progressStatusText"></div>
    </div>
@@ -101,27 +97,27 @@ Event.observe('cancelUploadButton','click',cancelProgress,false);
 
 //刷新上传状态
 function refreshUploadStatus(){
-	var ajaxW = new AjaxWrapper(false);
-	ajaxW.putRequest(
-		'Upload.action',
-		'uploadStatus=',
-		function(responseText){
-				eval("uploadInfo = " + responseText);
-				var progressPercent = Math.ceil(
-					(uploadInfo.ReadTotalSize) / uploadInfo.UploadTotalSize * 100);
-	
-				$('progressBarText').innerHTML = ' 上传处理进度: '+progressPercent+'% ['+
-					(uploadInfo.ReadTotalSize)+'/'+uploadInfo.UploadTotalSize + ' bytes]'+
-					' 正在处理第'+uploadInfo.CurrentUploadFileNum+'个文件'+
-					' 耗时: '+(uploadInfo.ProcessRunningTime-uploadInfo.ProcessStartTime)+' ms';
-				$('progressStatusText').innerHTML=' 反馈状态: '+uploadInfo.Status;
-				$('totalProgressBarBoxContent').style.width = parseInt(progressPercent * 3.5) + 'px';
-		}
-	);
+    var ajaxW = new AjaxWrapper(false);
+    ajaxW.putRequest(
+        'Upload.action',
+        'uploadStatus=',
+        function(responseText){
+                eval("uploadInfo = " + responseText);
+                var progressPercent = Math.ceil(
+                    (uploadInfo.ReadTotalSize) / uploadInfo.UploadTotalSize * 100);
+    
+                $('progressBarText').innerHTML = ' 上传处理进度: '+progressPercent+'% ['+
+                    (uploadInfo.ReadTotalSize)+'/'+uploadInfo.UploadTotalSize + ' bytes]'+
+                    ' 正在处理第'+uploadInfo.CurrentUploadFileNum+'个文件'+
+                    ' 耗时: '+(uploadInfo.ProcessRunningTime-uploadInfo.ProcessStartTime)+' ms';
+                $('progressStatusText').innerHTML=' 反馈状态: '+uploadInfo.Status;
+                $('totalProgressBarBoxContent').style.width = parseInt(progressPercent * 3.5) + 'px';
+        }
+    );
 }
 //上传处理
 function startProgress(){
-	Element.show('progressBar');
+    Element.show('progressBar');
     $('progressBarText').innerHTML = ' 上传中';
     $('progressStatusText').innerHTML=' ';
     $('uploadButton').disabled = true;
@@ -130,21 +126,21 @@ function startProgress(){
 }
 //取消上传处理
 function cancelProgress(){
-	$('cancelUploadButton').disabled = true;
-	var ajaxW = new AjaxWrapper(false);
-	ajaxW.putRequest(
-		'Upload.action',
-		'cancelUpload=true',
-		//因为form的提交，这可能不会执行
-		function(responseText){
-			eval("uploadInfo = " + responseText);
-			$('progressStatusText').innerHTML=' 反馈状态: '+uploadInfo.status;
-			if (msgInfo.cancel=='true'){
-				alert('删除成功!');
-				window.location.reload();
-			};
-		}
-	);
+    $('cancelUploadButton').disabled = true;
+    var ajaxW = new AjaxWrapper(false);
+    ajaxW.putRequest(
+        'Upload.action',
+        'cancelUpload=true',
+        //因为form的提交，这可能不会执行
+        function(responseText){
+            eval("uploadInfo = " + responseText);
+            $('progressStatusText').innerHTML=' 反馈状态: '+uploadInfo.status;
+            if (msgInfo.cancel=='true'){
+                alert('删除成功!');
+                window.location.reload();
+            };
+        }
+    );
 }
 </script>
     

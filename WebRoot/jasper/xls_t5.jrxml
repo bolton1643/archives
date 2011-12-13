@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="t5" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="t5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="tid" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select * from $P!{tid} ]]>
+		<![CDATA[select * from $P!{tid}]]>
 	</queryString>
 	<field name="ID" class="java.lang.Integer"/>
 	<field name="ID2" class="java.lang.Integer"/>
@@ -42,47 +42,47 @@
 			<staticText>
 				<reportElement x="100" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[VIWNVOCD]]></text>
+				<text><![CDATA[年度]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="150" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWO1O5CXQF]]></text>
+				<text><![CDATA[案卷号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="200" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOFPIPWLG]]></text>
+				<text><![CDATA[顺序号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="250" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOJMHD]]></text>
+				<text><![CDATA[文号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="300" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[V5OV3MED4UG]]></text>
+				<text><![CDATA[责任者]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="350" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[V15QFOGD]]></text>
+				<text><![CDATA[题名]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="400" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[V0WRLNED]]></text>
+				<text><![CDATA[日期]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="450" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[VFWOHLJD]]></text>
+				<text><![CDATA[页号]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="500" y="0" width="50" height="20"/>
 				<textElement/>
-				<text><![CDATA[VC3VR1YC]]></text>
+				<text><![CDATA[备注]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
