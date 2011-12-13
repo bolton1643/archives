@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="com.sw.pojo.User" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <html>
@@ -108,15 +107,12 @@
             欢迎您：<%=uName  %>&nbsp;&nbsp;<a href="admin/logout.jsp">退出系统</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         <div position="left"  title="主要菜单" id="accordion1"> 
-                     <div title="功能列表" class="l-scroll">
-                         <ul id="tree1" style="margin-top:3px;">
-                         
-                         </ul>   
-                    </div>
+             <div title="功能列表" class="l-scroll">
+                 <ul id="tree1" style="margin-top:3px;"></ul>   
+            </div>
         </div>
         <div position="center" id="framecenter"> 
             <div tabid="home" title="我的主页" style="height:300px" >
-                <iframe frameborder="0" name="home" src="page/welcome.html"></iframe>
             </div> 
         </div> 
 

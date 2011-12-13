@@ -22,8 +22,8 @@
     var strs = s.split(';');
     var myDate = new Date();
     
-	
-	var parent = opener.window;
+    
+    var parent = opener.window;
     //var tupian = parent.document.getElementById("tupian");
     for(i=0;i<strs.length;i++)
     {
@@ -34,40 +34,36 @@
         tr.id = ss;
         
         var td1 = parent.document.createElement("td");
-    	var br = parent.document.createElement("br");
-    	//parent.document.getElementById("tupian").appendChild(br);
-    	
-    	var td2 = parent.document.createElement("td");
-    	var imageName = parent.document.createElement('input');
-    	imageName.type="text";
-    	imageName.id="image";
-    	imageName.name="image";
-    	imageName.readOnly = true;
-    	imageName.size="30";
-    	imageName.value=strs[i];
-    	//parent.document.getElementById("tupian").appendChild(imageName);
-    	
-    	var td3 = parent.document.createElement("td");
-    	td3.innerHTML = "<input type='button' value=' 删除 ' onclick='delImg("+ss+")'>";
-    	//var imgNow  = parent.document.createElement('img');
-    	//imgNow.src="images/delete.gif";
-    	//imgNow.value = "aaa";
-	    
-		td1.appendChild(br)
-		td2.appendChild(imageName)
-    	
-    	tr.appendChild(td1);
-    	tr.appendChild(td2);
-    	tr.appendChild(td3);
-    	
-//    	parent.document.getElementById("tupian").appendChild(tr);
-		var pId = document.getElementById("cid").value;
-		if(pId.lastIndexOf("_PHOTO") != -1)
-			parent.document.getElementById(pId).value="<a href=page/upload/"+strs[i]+" target=_blank>预览</a>";
-		else 
-			parent.document.getElementById(pId).value="<a href=page/upload/"+strs[i]+" target=_blank>下载</a>";
-    	//alert(parent.document.getElementById("tupian").innerHTML);
-    	alert("上传文件成功！");
+        var br = parent.document.createElement("br");
+        //parent.document.getElementById("tupian").appendChild(br);
+        
+        var td2 = parent.document.createElement("td");
+        var imageName = parent.document.createElement('input');
+        imageName.type="text";
+        imageName.id="image";
+        imageName.name="image";
+        imageName.readOnly = true;
+        imageName.size="30";
+        imageName.value=strs[i];
+        //parent.document.getElementById("tupian").appendChild(imageName);
+        
+        var td3 = parent.document.createElement("td");
+        td3.innerHTML = "<input type='button' value=' 删除 ' onclick='delImg("+ss+")'>";
+
+        td1.appendChild(br)
+        td2.appendChild(imageName)
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+
+//        parent.document.getElementById("tupian").appendChild(tr);
+        var pId = document.getElementById("cid").value;
+        if(pId.lastIndexOf("_PHOTO") != -1)
+            parent.document.getElementById(pId).value="<a href=download.action?fileName="+strs[i]+" target=_blank>预览</a>";
+        else 
+            parent.document.getElementById(pId).value="<a href=download.action?fileName="+strs[i]+" target=_blank>下载</a>";
+        alert("上传文件成功！");
     }
-	window.close();
+    window.close();
 </script>

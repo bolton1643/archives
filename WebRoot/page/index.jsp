@@ -4,16 +4,10 @@
 <html>
   <head>
     <base href="http://<%=request.getHeader("host")%><%=request.getContextPath()%>/">
-  
-    <title>档案管理系统</title>
-    
-    
     <link href="css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-last.js" type="text/javascript"></script>    
-    <script src="js/plugins/ligerLayout.js" type="text/javascript"></script>
-    <script src="js/plugins/ligerTree.js" type="text/javascript"></script>
-    <script src="js/plugins/ligerTab.js" type="text/javascript"></script>
-
+    <script src="js/ligerui.all.js" type="text/javascript"></script>
+    <title>档案管理系统</title>
     <script type="text/javascript">
         var tab = null;
         var accordion = null;
@@ -36,7 +30,7 @@
                 attribute: ['nodename', 'url'],
                 onSelect: function (node)
                 {//begin of func(node)
-                	if(node.data.isLeaf == 'false') return;
+                    if(node.data.isLeaf == 'false') return;
                     if (!node.data.url) return;
                     var tabid = $(node.target).attr("tabid");
                     if (!tabid)
@@ -98,13 +92,13 @@
 </head>
 <body style="padding:0px;">  
 <%
-	String uName = (String)session.getAttribute("username");
-	if(uName!=null && uName.length()>0){
-		
-	}else{
-		String c = request.getHeader("host")+request.getContextPath();
-		response.sendRedirect("http://"+c+"/page/login.jsp");
-	}
+    String uName = (String)session.getAttribute("username");
+    if(uName!=null && uName.length()>0){
+        
+    }else{
+        String c = request.getHeader("host")+request.getContextPath();
+        response.sendRedirect("http://"+c+"/page/login.jsp");
+    }
 %>
 <div id="pageloading"></div>
   <div id="layout1" style="width:100%">
@@ -115,13 +109,11 @@
         <div position="left"  title="主要菜单" id="accordion1"> 
                      <div title="功能列表" class="l-scroll">
                          <ul id="tree1" style="margin-top:3px;">
-                         
                          </ul>   
                     </div>
         </div>
         <div position="center" id="framecenter"> 
             <div tabid="home" title="我的主页" style="height:300px" >
-                <iframe frameborder="0" name="home" src="page/welcome.html"></iframe>
             </div> 
         </div> 
 

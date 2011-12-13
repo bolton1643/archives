@@ -3,9 +3,6 @@ package com.sw.action;
 import java.io.File;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,7 +28,6 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sw.service.DataManager;
-import com.sw.util.MetaData;
 import com.sw.util.MetaDataRow;
 
 public class DataAction extends ActionSupport{
@@ -39,15 +35,15 @@ public class DataAction extends ActionSupport{
 
     private static Logger logger = Logger.getLogger(DataAction.class);
     
-       private String page;//当前处于第几页
-       private String pagesize;//每页的数据数
+    private String page;//当前处于第几页
+    private String pagesize;//每页的数据数
 
-       private String radd;
-       private String rdelete;
-       private String rmodify;
-       private String rdownload;
+    private String radd;
+    private String rdelete;
+    private String rmodify;
+    private String rdownload;
        
-       private String rprint;
+    private String rprint;
     private String total;
 
     private String url;
@@ -60,57 +56,40 @@ public class DataAction extends ActionSupport{
 
     private List<MetaDataRow> cList;// 数据表的字段
 
-       private List<Object[]> dList;// 数据--列表
+    private List<Object[]> dList;// 数据--列表
 
-      private DataManager dataManager;
+    private DataManager dataManager;
 
-      private MetaData metaData;// 表结构
+    private List<String> qColumn;
 
-      private List<String> qColumn;
+    private List<String> qCond;
 
-      private List<String> qCond;
+    private List<String> qValue;
 
-      private List<String> qValue;
+    private String jsonList;
 
-      private String jsonList;
+    private String rid;
+
+    public String getRid() {
+        return rid;
+    }// end of
+
+    public void setRid(String rid) {
+        this.rid = rid;
+    }// end
+
     
-      private String rid;
-    
-      public String getRid() {
-            return rid;
-      }//end of 
 
-      public void setRid(String rid) {
-           this.rid = rid;
-      }//end
-
-    private static Connection getConnection() throws ClassNotFoundException,SQLException{
-           String driver="com.mysql.jdbc.Driver";
-        String url="jdbc:mysql://localhost/rf2";
-        String user="root";
-        String password="123456";
-          Class.forName(driver);
-           Connection conn=DriverManager.getConnection(url,user,password);
-          return conn;
-    }//end of 
-    
+      
     public String getJsonList() {
         return jsonList;
-    }
+    }//end
 
     public void setJsonList(String jsonList) {
         this.jsonList = jsonList;
-    }
+    }//end
 
-    public MetaData getMetaData() {
-        return metaData;
-    }
-
-    public void setMetaData(MetaData metaData) {
-        this.metaData = metaData;
-    }
-
-    public String test()throws Exception{
+    public String test() throws Exception {
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setHeader("Cache-Control", "no-cache");
         response.setContentType("text/html;charset=utf-8");
@@ -119,30 +98,31 @@ public class DataAction extends ActionSupport{
         // 调用业务
 
         // 将list转为json
-        //String json = "{\"Rows\":[{\"CustomerID\":\"ALFKI\",\"CompanyName\":\"Alfreds Futterkiste\",\"ContactName\":\"Maria Anders\",\"ContactTitle\":\"Sales Representative\",\"Address\":\"Obere Str. 57\",\"City\":\"Berlin\",\"Region\":null,\"PostalCode\":\"12209\",\"Country\":\"Germany\",\"Phone\":\"030-0074321\",\"Fax\":\"030-0076545\"}],\"Total\":\"2\"}";
-        
-        
-        
+        // String json =
+        // "{\"Rows\":[{\"CustomerID\":\"ALFKI\",\"CompanyName\":\"Alfreds Futterkiste\",\"ContactName\":\"Maria Anders\",\"ContactTitle\":\"Sales Representative\",\"Address\":\"Obere Str. 57\",\"City\":\"Berlin\",\"Region\":null,\"PostalCode\":\"12209\",\"Country\":\"Germany\",\"Phone\":\"030-0074321\",\"Fax\":\"030-0076545\"}],\"Total\":\"2\"}";
+
         // 将流打到客户端
         out.print(jsonList);
         // 清空缓存
         out.flush();
         // 关闭流
-        out.close();    
-        
+        out.close();
+
         return SUCCESS;
-    }
+    }//endof func
+
+    
     public String toJsonData(int totalRecord){
         StringBuilder sb = new StringBuilder();
         StringBuilder sbRow = new StringBuilder();
         boolean f = true;
-        
+
         sb.append("{\"Rows\":[");
         if(dList !=null && dList.size()>0){
             int dataRows = dList.size();
             for(int i=0;i< dataRows;i++){
                 Object o2[] = (Object[]) dList.get(i);
-                
+
                 sbRow.setLength(0);
                 boolean f2 = true;
                 for (int j = 0; j < cList.size(); j++) {
@@ -150,33 +130,31 @@ public class DataAction extends ActionSupport{
                         f2 = false;
                     }else{
                         sbRow.append(",");
-                    }
+                    }//end
                     MetaDataRow mdr = cList.get(j);
                     sbRow.append("\"").append(mdr.getDName()).append("\"");
                     sbRow.append(":");
                     sbRow.append("\"").append((o2[j] != null && !o2[j].equals("null")) ? o2[j] : "").append("\"");
-                }
-                
+                }//endof for
+
                 if(f){
                     f = false;
                 }else{
                     sb.append(",");
-                }
+                }//end
                 sb.append("{"+sbRow.toString()+"}");
-            }
+            }//end
             
             sb.append("],\"Total\":\"").append(""+totalRecord).append("\"}");
-        }
-        
-        
-        //String s = "{\"Rows\":[{\"CustomerID\":\"ALFKI\",\"CompanyName\":\"Alfreds Futterkiste\",\"ContactName\":\"Maria Anders\",\"ContactTitle\":\"Sales Representative\",\"Address\":\"Obere Str. 57\",\"City\":\"Berlin\",\"Region\":null,\"PostalCode\":\"12209\",\"Country\":\"Germany\",\"Phone\":\"030-0074321\",\"Fax\":\"030-0076545\"}],\"Total\":\"2\"}";
+        }//end
         return sb.toString();
-    }
+    }//end
+
     public String list() throws Exception {
         try {
             String tb = tid;
 
-            cList = metaData.getMetaData(tb);
+            cList = dataManager.getMetaData(tb);
             
             boolean f = true;
             StringBuffer whereCond = new StringBuffer();
@@ -264,16 +242,106 @@ public class DataAction extends ActionSupport{
         }
     }
 
-    
+
+    public String list2() throws Exception {
+        try {
+            String tb = tid;
+
+            cList = dataManager.getMetaData(tb);
+
+            boolean f = true; 
+            StringBuffer whereCond = new StringBuffer();
+            if (qValue != null && qValue.size() > 0) {
+                String[] qValueArray = qValue.get(0).split(",");
+                String[] qCondArray = qCond.get(0).split(",");
+                String[] qColumnArray = qColumn.get(0).split(",");
+
+                for (int t = 0; t < qValueArray.length; t++) {
+                    if (qValueArray[t] != null 
+                            && qValueArray[t].trim().length() > 0) {
+                        String qC = qCondArray[t].trim();
+                        if (qC.equalsIgnoreCase("等于"))
+                            qC = "=";
+                        else if (qC.equalsIgnoreCase("大于等于")) 
+                            qC = ">="; 
+                        else if (qC.equalsIgnoreCase("小于等于")) 
+                            qC = "<="; 
+
+                        if (f) {
+                            f = false;
+                            if (qC.equalsIgnoreCase("包含"))
+                                whereCond.append("(")
+                                        .append(qColumnArray[t].trim())
+                                        .append(" like '%")
+                                        .append(qValueArray[t].trim())
+                                        .append("%')");
+                            else
+                                whereCond.append("(")
+                                        .append(qColumnArray[t].trim())
+                                        .append(qC).append(" '")
+                                        .append(qValueArray[t].trim())
+                                        .append("')");
+                        } else {
+                            if (qC.equalsIgnoreCase("包含"))
+                                whereCond.append(" and (")
+                                        .append(qColumnArray[t].trim())
+                                        .append(" like '%")
+                                        .append(qValueArray[t].trim())
+                                        .append("%')");
+                            else
+                                whereCond.append(" and (")
+                                        .append(qColumnArray[t].trim())
+                                        .append(" '").append(qC)
+                                        .append(qValueArray[t].trim())
+                                        .append("')");
+                        }//end
+                    }//end
+                }//end
+            }//end
+            // System.out.println(whereCond.toString());
+
+            String cp = this.getPage();
+            if (cp == null || cp.trim().length() <= 0)
+                cp = "1";
+            this.setPage(cp);
+
+            int ps = 30;
+            if (pagesize != null && pagesize.length() > 0) {
+                ps = Integer.parseInt(pagesize);
+            }
+            if (dataManager.list(tb, whereCond.toString(), page, ps) != null)
+                this.setDList(dataManager.list(tb, whereCond.toString(), page,
+                        ps));
+            int totalRecord = dataManager.getTotalCount(tb,
+                    whereCond.toString());
+
+            HttpServletRequest request = ServletActionContext.getRequest();
+            String data = request.getParameter("data");
+            if (data != null && data.equalsIgnoreCase("1")) {
+                String s = toJsonData(totalRecord);
+                if (s != null && s.length() > 0) {
+                    this.setJsonList(s);
+                    test();
+                }//end
+            }//end
+            return SUCCESS;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+            return SUCCESS;
+       }//end
+   }//end of func
+
+
     public String dAdd() throws Exception {
         String tb = tid;
-        cList = metaData.getMetaData(tb);
+        cList = dataManager.getMetaData(tb);
         return SUCCESS;
     }
 
     public String dDoAdd() throws Exception {
         String tb = tid;
-        cList = metaData.getMetaData(tb);
+        cList = dataManager.getMetaData(tb);
         StringBuffer sbCol = new StringBuffer();
         StringBuffer sbVal = new StringBuffer();
         StringBuffer sql = new StringBuffer();
@@ -357,7 +425,7 @@ public class DataAction extends ActionSupport{
         String tb = request.getParameter("tid");
         id = request.getParameter("id");
 
-        cList = metaData.getMetaData(tb);
+        cList = dataManager.getMetaData(tb);
         Object o = dataManager.getById(tb, id).get(0);
 
         Object o2[] = (Object[]) o;
@@ -396,7 +464,7 @@ public class DataAction extends ActionSupport{
 
     public String dDoEdit() throws Exception {
         String tb = tid;
-        cList = metaData.getMetaData(tb);
+        cList = dataManager.getMetaData(tb);
         StringBuffer sql = new StringBuffer();
         StringBuffer sbCol = new StringBuffer();
 
@@ -512,7 +580,7 @@ public class DataAction extends ActionSupport{
             if(rid !=null && rid.equalsIgnoreCase("7")){
                 jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
             }else{
-                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,  getConnection());    
+                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,  dataManager.getConn());    
             }
             
             
@@ -555,8 +623,7 @@ public class DataAction extends ActionSupport{
         File parent = new File(reportSource).getParentFile();
         //将.jrxml模板文件编译成为.jasper文件,当然,其文件名可以指定,如果没指定,则与.jrxml文件名一样.只是后缀不同而已
         JasperCompileManager.compileReportToFile(reportSource, new File(
-                parent, "xls_"+rid+".jasper")
-        .getAbsolutePath());             
+                parent, "xls_"+rid+".jasper").getAbsolutePath());
         
         
             File reportFile = new File(ServletActionContext.getRequest()  
@@ -569,7 +636,7 @@ public class DataAction extends ActionSupport{
             JasperReport jasperReport = (JasperReport) JRLoader  
                     .loadObject(reportFile);  
             
-            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,  getConnection());    
+            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataManager.getConn() );    
             
             }catch (Exception e) {  
                 logger.error(e.getMessage());

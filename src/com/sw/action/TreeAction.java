@@ -18,7 +18,6 @@ import org.apache.struts2.json.annotations.JSON;
 
 import com.sw.service.TreeManager;
 import com.sw.util.ChineseUtil;
-import com.sw.util.MetaData;
 import com.sw.util.MetaDataRow;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -78,15 +77,6 @@ public class TreeAction extends ActionSupport {
     private List<String> dNotes;// 新增，编辑时传参
 
     private String admin;//
-    private MetaData metaData;
-
-    public MetaData getMetaData() {
-        return metaData;
-    }
-
-    public void setMetaData(MetaData metaData) {
-        this.metaData = metaData;
-    }
 
     protected void print(HttpServletResponse response, String info)
             throws IOException {
@@ -114,7 +104,8 @@ public class TreeAction extends ActionSupport {
             
             User u = (User)session.get("user");
             int userid = u.getUserId();
-            if(root == null) root  = "1";
+            if(root == null) 
+                root  = "1";
             if (root == null) {
 
             } else if (root.equalsIgnoreCase("source")) {
@@ -128,13 +119,12 @@ public class TreeAction extends ActionSupport {
             if(admin !=null && admin.equalsIgnoreCase("1")){
                 if (list != null && list.size() > 0){
                     json = ConvertToJson.ConverListToJsonAdmin(list);
-                }
+                }//endof if
             }else{
                 if (list != null && list.size() > 0)
-                    json = ConvertToJson.ConverListToJson(list);                
-            }
+                    json = ConvertToJson.ConverListToJson(list);
+            }//end
 
-                //json = "[{\"text\":\"节点1\"},{\"text\":\"节点2\"}]";
             // 将流打到客户端
             out.print(json);
             // 清空缓存
@@ -152,7 +142,7 @@ public class TreeAction extends ActionSupport {
     public String treeGet() throws Exception {
         String tb = "t" + id;
 
-        mList = metaData.getMetaData(tb);
+        mList = treeManager.getMetaData(tb);
         return SUCCESS;
     }
 
@@ -166,7 +156,7 @@ public class TreeAction extends ActionSupport {
             return "editmenu";
         } else {
             String tb = "t" + id;
-            mList = metaData.getMetaData(tb);
+            mList = treeManager.getMetaData(tb);
             return "edittemplate";
         }
 
@@ -198,7 +188,7 @@ public class TreeAction extends ActionSupport {
         treeNode.setOpenurl(openurl);
         treeManager.updateTreeNode(treeNode);
 
-        mList = metaData.getMetaData("t" + id);
+        mList = treeManager.getMetaData("t" + id);
         Set<String> newColums = new HashSet<String>();
         boolean m = false;// 字段是否变化
         boolean mCol = false;
@@ -328,7 +318,7 @@ public class TreeAction extends ActionSupport {
 
         if (m) {
             System.out.println(sb.toString());
-            metaData.operateTable(sb.toString());
+            treeManager.operateTable(sb.toString());
         }//end
         return SUCCESS;
     }
@@ -389,7 +379,7 @@ public class TreeAction extends ActionSupport {
             sb.append(",");
         }//endoffor
         sb.append("PRIMARY KEY  (`id`))");
-        metaData.operateTable(sb.toString());
+        treeManager.operateTable(sb.toString());
         return SUCCESS;
     }//endof func
 
@@ -401,7 +391,7 @@ public class TreeAction extends ActionSupport {
 
         if (!treeNode.getIsfolder().equalsIgnoreCase("1")) {
             String sql = "drop table t" + id + ";";
-            metaData.operateTable(sql);
+            treeManager.operateTable(sql);
         }
 
         HttpServletResponse response = ServletActionContext.getResponse();

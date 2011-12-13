@@ -52,6 +52,7 @@ $(document).ready(function(){
       var trNode = $('<li><span class="bruce_page_txt_150"><input class="bruce_page_txt_input" name="dNotes" id="dNotes" type="text"/></span><span class="bruce_page_txt_150"> <select id="dType" name="dType" ltype="select" class="l-hidden"><option>整数</option><option>字符串</option><option>日期</option><option>小数</option><option>文件</option></select> </span> <span class="bruce_page_txt_150"><input class="bruce_page_txt_input" name="dLength" id="dLength" type="text"/></span> <span class="bruce_page_txt_150" > <select id="dAllowNull" name="dAllowNull" ltype="select" class="l-hidden"><option>允许为空</option><option>不允许为空</option></select></span> <span class="bruce_page_txt_150"> <div class="btn" style="margin:0 auto;float:left"> <div class="btn_l"></div> <input class="btn_m" type="button" value="删除"  onclick="rm(this.parentNode.parentNode.parentNode);"/> <div class="btn_r"></div> </div> </span> </li>');
       //var trNode = $("<tr align='left'><td><input name='dNotes' id='dNotes' type='text'/></td><td><select id='dType' name='dType'><option>整数</option><option>字符串</option><option>日期</option><option>小数</option><option>文件</option></select></td><td><input name='dLength' id='dLength' value='11' type='text'/></td><td><select id='dAllowNull' name='dAllowNull'><option>允许为空</option><option>不允许为空</option></select></td><td><input type='button' value='删除' onclick='rm(this.parentNode.parentNode);'/></td></tr>");
       insertPos.append(trNode);
+      $("#trEditForm").ligerForm();
     });//end
     $("#trEditForm").ligerForm();
 });

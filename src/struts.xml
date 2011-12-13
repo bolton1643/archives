@@ -114,7 +114,10 @@
             <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>    
         <action name="trDoEditTemplate" class="com.sw.action.TreeAction" method="treeDoEditTemplate">
-            <result name="success" type="redirect">admin/home.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="encode">true</param>
+                <param name="actionName">trEdit?id=${id}</param>
+            </result>
             <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
         
@@ -146,19 +149,20 @@
              -->
             <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
-        <action name="download"
-            class="com.ltxc.action.DownloadAction">
+        <action name="download" class="com.ltxc.action.DownloadAction">
+            <param name="inputPath">/home/sw/test/</param>
+            <param name="fileName">${fileName}</param>
             <result name="success" type="stream">
                 <param name="contentType">
-                    application/vnd.ms-powerpoint
+                    application/octet-stream;charset=UTF8
                 </param>
+                <param name="inputName">inputStream</param>
                 <param name="contentDisposition">
-                    filename="struts2.ppt"
+                    attachment;filename="${downloadFileName}"
                 </param>
-                <param name="inputName">DownloadFile</param>
+                <param name="bufferSize">4096</param>
             </result>
         </action>    
-        
         
         <!-- ÎÄµµ¹ÜÀí -->
         <action name="fmList" class="com.sw.action.FileManageAction" method="list">
@@ -261,10 +265,12 @@
             <result name="success">page/dmanage.jsp</result>
             <result name="failure">error.jsp</result>
         </action>        
-        <action name="dList2" class="com.sw.action.DataAction" method="list">
-            <result type="json"/>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-        </action>    
+        <action name="dList2" class="com.sw.action.DataAction" method="list2">
+            <result type="json">
+                    <param name="includeProperties">jsonList</param>
+            </result>
+              <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
         <action name="test" class="com.sw.action.DataAction" method="test">
             <result name="success">page/dmanage.jsp</result>
             <result name="failure">error.jsp</result>
@@ -307,6 +313,6 @@
         
         <action name="XLS2" class="com.sw.action.DataAction" method="XLS">
             <result name="xls">page/pdf.jsp</result>
-        </action>                                                            
+        </action>
     </package>
 </struts>

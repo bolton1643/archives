@@ -1,12 +1,33 @@
 package com.sw.service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import com.sw.dao.DataDao;
+import com.sw.dao.MetaData;
 import com.sw.service.DataManager;
+import com.sw.util.MetaDataRow;
 
 public class DataManagerImpl implements DataManager {
 	private DataDao dataDao;
+	private MetaData metaData;// 表结构
+	
+	public boolean operateTable(String sql){
+		return metaData.operateTable(sql);
+	}
+
+	public List<MetaDataRow> getMetaData(String tName){
+		return metaData.getMetaData(tName);
+	}
+	
+	
+	public MetaData getMetaData() {
+		return metaData;
+	}
+
+	public void setMetaData(MetaData metaData) {
+		this.metaData = metaData;
+	}
 	
 	public DataDao getDataDao() {
 		return dataDao;
@@ -38,6 +59,11 @@ public class DataManagerImpl implements DataManager {
 
 	public int getTotalCount(String tb,String where) throws Exception {
 		return dataDao.getTotalCount(tb,where);
+	}
+
+	@Override
+	public Connection getConn() {
+		return dataDao.getConn();
 	}
 
 }

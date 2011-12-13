@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sw.pojo.TreeNode;
 import com.sw.pojo.TreeNodeRight;
+import com.sw.util.MetaDataRow;
 
 public interface TreeManager {
 
@@ -20,4 +21,8 @@ public interface TreeManager {
 	TreeNode getTreeNodeById(Integer id) throws Exception;
 
 	void updateExpanded(Integer id) throws Exception;
+	
+	public boolean operateTable(String sql);
+
+	public List<MetaDataRow> getMetaData(String tName);
 }

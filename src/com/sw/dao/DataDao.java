@@ -1,6 +1,8 @@
 package com.sw.dao;
 
+import java.sql.Connection;
 import java.util.List;
+
 
 public interface DataDao {
 	int add(String sql) throws Exception;
@@ -14,4 +16,6 @@ public interface DataDao {
 	List getById(String tb, String id) throws Exception;
 
 	int getTotalCount(String tb,String where) throws Exception;
+	
+	Connection getConn();
 }
