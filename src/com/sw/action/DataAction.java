@@ -144,9 +144,8 @@ public class DataAction extends ActionSupport{
                 }//end
                 sb.append("{"+sbRow.toString()+"}");
             }//end
-            
-            sb.append("],\"Total\":\"").append(""+totalRecord).append("\"}");
         }//end
+        sb.append("],\"Total\":\"").append(""+totalRecord).append("\"}");
         return sb.toString();
     }//end
 
@@ -291,7 +290,7 @@ public class DataAction extends ActionSupport{
                             else
                                 whereCond.append(" and (")
                                         .append(qColumnArray[t].trim())
-                                        .append(" '").append(qC)
+                                        .append(qC).append("'")
                                         .append(qValueArray[t].trim())
                                         .append("')");
                         }//end

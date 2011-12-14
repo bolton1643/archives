@@ -22,7 +22,8 @@ public class UploadAction extends ActionSupport {
     private String p;
     private String fileName;
     private String cid;//用来存字段名称
-
+    private String tid;
+    
     private List<File> file;
     // private File[]file;
     private List<String> fileFileName;
@@ -52,6 +53,14 @@ public class UploadAction extends ActionSupport {
     public void setFileContentType(List<String> fileContentType) {
         this.fileContentType = fileContentType;
     }
+    
+    public String getTid() {
+        return tid;
+    }
+
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
 
     @SuppressWarnings("deprecation")
     @Override
@@ -66,7 +75,11 @@ public class UploadAction extends ActionSupport {
             for (int i = 0; i < file.size(); i++) {
                 InputStream is = new FileInputStream(file.get(i));
 
-                String root = "/root/upload";//ServletActionContext.getRequest().getRealPath("/page/upload");
+                String root = "/root/upload/" + this.getTid();;//ServletActionContext.getRequest().getRealPath("/page/upload");
+                File folder = new File(root);
+                if(! folder.exists()){
+                    folder.mkdir();
+                }//e
 
                 File destFile = new File(root, this.getFileFileName().get(i));
                 int dupicateFile = 0;

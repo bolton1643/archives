@@ -37,14 +37,14 @@
              <li>
               <span class="bruce_page_txt_80"><s:property value="dNotes" /></span>
               <span class="bruce_page_txt_200"><INPUT type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />"></INPUT></span>
-              <span class="bruce_page_txt_80"><input class="bruce-button" type="button" name="选择图片" value="选择图片" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')"></input></span>
+              <span class="bruce_page_txt_80"><input class="bruce-button" type="button" name="选择图片" value="选择图片" onClick="window.open('page/d_upload.jsp?tid=<s:property value="tid" />&p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')"></input></span>
              </li>    
             </s:elseif>
             <s:elseif test="dType=='文件'">
             <li>
               <span class="bruce_page_txt_80"><s:property value="dNotes" /></span>
-              <span class="bruce_page_txt_200"><INPUT type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />"/></INPUT></span>                        
-              <span class="bruce_page_txt_80"><input class="bruce-button" type="button" name="选择文件" value="选择文件" onClick="window.open('page/d_upload.jsp?p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')"></input></span>            
+              <span class="bruce_page_txt_200"><INPUT type="text" name="<s:property value="dName" />" value="<s:property value="dValue" />" id="<s:property value="dName" />"/></INPUT></span>
+              <span class="bruce_page_txt_80"><input class="bruce-button" type="button" name="选择文件" value="选择文件" onClick="window.open('page/d_upload.jsp?tid=<s:property value="tid" />&p=notice&cid=<s:property value="dName" />','fileUpload','width=480,height=320')"></input></span>            
             </li>
             </s:elseif>
             <s:else>

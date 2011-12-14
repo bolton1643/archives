@@ -30,7 +30,7 @@ public class TreeNodeRight {
     }
 
     public String getRprint() {
-        return rprint;
+        return rprint != null ? rprint : "0";
     }
 
     public void setRprint(String rprint) {
@@ -86,7 +86,7 @@ public class TreeNodeRight {
     }
 
     public String getRadd() {
-        return radd;
+        return radd != null ? radd : "0";
     }
 
     public void setRadd(String radd) {
@@ -94,7 +94,7 @@ public class TreeNodeRight {
     }
 
     public String getRdelete() {
-        return rdelete;
+        return rdelete != null ? rdelete : "0";
     }
 
     public void setRdelete(String rdelete) {
@@ -102,7 +102,7 @@ public class TreeNodeRight {
     }
 
     public String getRmodify() {
-        return rmodify;
+        return rmodify != null ? rmodify : "0";
     }
 
     public void setRmodify(String rmodify) {
@@ -110,7 +110,7 @@ public class TreeNodeRight {
     }
 
     public String getRdownload() {
-        return rdownload;
+        return rdownload != null ? rdownload : "0";
     }
 
     public void setRdownload(String rdownload) {

@@ -52,6 +52,11 @@ public class ConvertToJson {
             return "";
         int i = 0;
         for (TreeNodeRight treeNode : treeNodes) {
+            if("0".equals(treeNode.getIsfolder())){
+                if("0".equals(treeNode.getRadd()) && "0".equals(treeNode.getRmodify()) && "0".equals(treeNode.getRdelete())
+                        && "0".equals(treeNode.getRdownload()) && "0".equals(treeNode.getRprint()))
+                    continue;
+            }//end
             if (i > 0) {
                 jsonString.append(",");
             }//endof i>0

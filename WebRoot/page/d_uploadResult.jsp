@@ -13,6 +13,7 @@
 <body>
 <input type="hidden" id="v" value="<s:property value="fileName" />">
 <input type="hidden" id="cid" value="<s:property value="cid" />">
+<input type="hidden" id="tid" value="<s:property value="tid" />">
 </body>
 </html>
 
@@ -57,13 +58,13 @@
         tr.appendChild(td2);
         tr.appendChild(td3);
 
-//        parent.document.getElementById("tupian").appendChild(tr);
+        var tid = document.getElementById("tid").value;
         var pId = document.getElementById("cid").value;
         if(pId.lastIndexOf("_PHOTO") != -1)
-            parent.document.getElementById(pId).value="<a href=download.action?fileName="+strs[i]+" target=_blank>预览</a>";
+            parent.document.getElementById(pId).value="<a href=download.action?fileName="+tid+"/"+strs[i]+" target=_blank>预览</a>";
         else 
-            parent.document.getElementById(pId).value="<a href=download.action?fileName="+strs[i]+" target=_blank>下载</a>";
+            parent.document.getElementById(pId).value="<a href=download.action?fileName="+tid+"/"+strs[i]+" target=_blank>下载</a>";
         alert("上传文件成功！");
-    }
+    }//end
     window.close();
 </script>

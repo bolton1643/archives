@@ -3,13 +3,11 @@
 <%@include file="common/global.jsp" %>
 <html>
 <head>
-<script type="text/javascript" src="js/prototype.js"></script>
-<script type="text/javascript" src="js/AjaxWrapper.js"></script>
-<link type="text/css" href="css/bruce.css" rel="stylesheet" />
-<title>上传文件</title>
-
-<script type="text/javascript">
-
+        <link type="text/css" href="css/bruce.css" rel="stylesheet" />
+        <title>上传文件</title>
+        <script type="text/javascript" src="js/jquery-last.js"></script>
+        <script type="text/javascript" src="js/ligerui.all.js"></script>
+    <script type="text/javascript">
     function addMore()
     {//end
         var td = document.getElementById("more");
@@ -43,6 +41,7 @@
 <%
     String p = (String)request.getParameter("p");
     String cid = (String)request.getParameter("cid");
+    String tid = (String)request.getParameter("tid");
 %>
 <div class="bruce_txt">
   <ul>
@@ -52,6 +51,7 @@
     <s:form id="fileUploadForm" name="fileUploadForm" action="dupload.action" theme="simple" method="post" enctype="multipart/form-data">
     <input type="hidden" id="p" name="p" value="<%=p %>">
     <input type="hidden" id="cid" name="cid" value="<%=cid %>">
+    <input type="hidden" id="tid" name="tid" value="<%=tid %>">
     <li>
         <span class="bruce_txt_3"><font color="#FF00FF">注意： 上传大文件，需要较长的时间，请耐心等待   </font></span>         
     </li>
@@ -91,10 +91,6 @@
    </div>
    
 <script>
-Element.hide('progressBar');
-Event.observe('fileUploadForm','submit',startProgress,false);
-Event.observe('cancelUploadButton','click',cancelProgress,false);
-
 //刷新上传状态
 function refreshUploadStatus(){
     var ajaxW = new AjaxWrapper(false);

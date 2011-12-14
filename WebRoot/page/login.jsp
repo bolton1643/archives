@@ -20,7 +20,20 @@
 			@IMPORT url("css/validator/validator.css");
      @IMPORT url("css/bruce.css");
 </style>
-		
+<script type="text/javascript">
+function ie6login(){
+        var isIE6=false;
+        if(navigator.userAgent.indexOf("MSIE 6.0") != -1){
+            isIE6=true;
+        }
+        if(navigator.userAgent.indexOf("MSIE 7.0") != -1){
+            isIE6=true;
+        }
+        if(isIE6) {
+                $("form[name=loginForm]").submit();
+        }
+}
+</script>
 		<title>用户登录</title>
 	</head>
 	<body>
@@ -50,7 +63,7 @@
 			<div style="text-align:center; width:200px;margin:0 auto;">
 				 <div class="btn" style="margin:0 auto;float:left">
           <div class="btn_l"></div>
-          <button class="btn_m" name="submit" id="submit">登录</button>  
+          <button class="btn_m" name="submit" id="submit" onclike="ie6login();">登录</button>  
           <div class="btn_r"></div>
        </div>
        

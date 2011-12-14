@@ -68,7 +68,7 @@ public class TreeNodeDaoHibernate extends HibernateDaoSupport implements
                 + " treenode t1 left join userright t2 on t1.id = t2.menuid and t2.userid=" + userid;
             else
              q = "select t1.id,t1.text, t1.parent_id,t1.expanded,t1.isfolder,t2.radd,t2.rdelete,t2.rmodify,t2.rdownload,t1.openurl,t2.rprint from "
-                    + " treenode t1 left join userright t2 on t1.id = t2.menuid  and t2.userid=" + userid + " where (t1.id<2 or t1.id > 3)";
+                    + " treenode t1 left join userright t2 on t1.id = t2.menuid  and t2.userid=" + userid ;//+ " where (t1.id<2 or t1.id > 3)";
         }//end
         
         System.out.println(q);

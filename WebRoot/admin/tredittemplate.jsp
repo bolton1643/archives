@@ -103,13 +103,8 @@ $(document).ready(function(){
         </li>
         <s:iterator id="mList" value="mList" status="st">
            <s:if test="dName.lastIndexOf('_PHOTO')>=0 "></s:if>
-           <s:elseif test="(dName=='ID' or dName='ID2')">
-           <li>
-             <span class="bruce_page_txt_150">编号</span>
-             <span class="bruce_page_txt_150">整数</span>
-             <span class="bruce_page_txt_150">不允许为空</span>
-             <span class="bruce_page_txt_150">&nbsp</span>
-           </li>
+           <s:elseif test="dName=='ID'"> </s:elseif>
+           <s:elseif test="dName='ID2'">
            </s:elseif>
            <s:else>
              <li>
